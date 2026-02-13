@@ -2,9 +2,26 @@ export interface Tool {
   name: string;
   category: string;
   description: string;
+  why: string;
+  howToUse: string;
   optional?: boolean;
   link?: string;
   estimatedCost?: string;
+  alternatives?: string[];
+  safetyTips?: string[];
+}
+
+export interface DIYProject {
+  id: string;
+  title: string;
+  description: string;
+  difficulty: 'easy' | 'medium' | 'hard';
+  duration: string;
+  materials: string[];
+  steps: string[];
+  whatYouLearn: string[];
+  troubleshooting: { problem: string; solution: string }[];
+  realWorldUse: string;
 }
 
 export interface Reference {
@@ -17,13 +34,14 @@ export interface ModuleContent {
   id: string;
   title: string;
   description: string;
-  duration: string; // e.g., "45 minutes"
+  duration: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
-  content: string; // HTML content
+  content: string;
   codeExamples?: string[];
   practiceProblems?: string[];
   references?: Reference[];
   prerequisites?: string[];
+  diyProjects?: DIYProject[];
 }
 
 export interface Course {
@@ -34,11 +52,12 @@ export interface Course {
   longDescription: string;
   category: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
-  duration: string; // e.g., "8 weeks"
+  duration: string;
   image?: string;
   tools: Tool[];
   modules: ModuleContent[];
   learningOutcomes: string[];
+  diyProjects?: DIYProject[];
   prerequisites?: string[];
   references?: Reference[];
 }
@@ -48,171 +67,200 @@ export const courses: Course[] = [
     id: 'electronics-101',
     title: 'Electronics 101',
     slug: 'electronics-101',
-    description: 'Master the fundamentals of electricity and electronic circuits',
-    longDescription: 'A comprehensive introduction to electronics covering voltage, current, resistance, and basic circuit analysis. This course builds a solid foundation for all advanced electronics topics.',
+    description: 'Learn the basics of electricity and how circuits work',
+    longDescription: 'A fun introduction to electronics for beginners! Learn what electricity is, how it flows through circuits, and why we need different parts. Perfect for anyone curious about how electronic devices work.',
     category: 'Electronics',
     difficulty: 'beginner',
-    duration: '6 weeks',
+    duration: '4 weeks',
     tools: [
       {
         name: 'Breadboard',
         category: 'Hardware',
-        description: 'Solderless prototyping board for building circuits',
-        estimatedCost: '$5-15'
-      },
-      {
-        name: 'Digital Multimeter',
-        category: 'Hardware',
-        description: 'Measures voltage, current, and resistance',
-        estimatedCost: '$15-50'
+        description: 'A board with holes where you can plug in wires and parts without soldering',
+        why: 'Breadboards let you build circuits quickly and test ideas without permanently connecting parts. You can take apart and rebuild circuits as many times as you want!',
+        howToUse: 'Push wires and component legs gently into the holes. The holes are connected in rows, so parts in the same row are electrically connected.',
+        estimatedCost: '$5-15',
+        safetyTips: ['Don\'t force parts into holes - if they don\'t fit easily, try a different hole', 'Keep the breadboard away from water and moisture']
       },
       {
         name: 'Jumper Wires',
         category: 'Hardware',
-        description: 'Connects components on breadboard',
-        estimatedCost: '$5-10'
+        description: 'Flexible wires that connect parts on the breadboard',
+        why: 'These wires carry electricity between different parts of your circuit. They come in different colors to help you organize your circuits.',
+        howToUse: 'Strip about 5mm of plastic from each end, then push into breadboard holes. Use different colors for positive (red), negative (black), and signals (other colors).',
+        estimatedCost: '$5-10',
+        safetyTips: ['Don\'t bend wires too many times - they can break', 'Keep wire ends clean and free of plastic coating']
+      },
+      {
+        name: 'Digital Multimeter',
+        category: 'Hardware',
+        description: 'A tool that measures voltage, current, and resistance',
+        why: 'This is like a doctor\'s thermometer for circuits! It tells you if electricity is flowing correctly and helps you find problems.',
+        howToUse: 'Set the dial to what you want to measure (voltage, current, or resistance). Touch the red and black probes to the parts you\'re testing.',
+        estimatedCost: '$15-50',
+        alternatives: ['Analog multimeter (older style but still works)', 'Clamp meter (for measuring current without breaking the circuit)'],
+        safetyTips: ['Never measure voltage or current without setting the dial correctly first', 'Start with the highest setting if you\'re not sure what the voltage is']
       },
       {
         name: 'Resistor Kit',
         category: 'Hardware',
-        description: 'Assorted resistors for circuits',
-        estimatedCost: '$5-15'
+        description: 'Different resistors that slow down electricity flow',
+        why: 'Resistors protect delicate parts like LEDs from too much electricity. Different resistors slow electricity by different amounts.',
+        howToUse: 'Read the colored bands on the resistor to find its value. Use a resistor color code chart or app to decode them.',
+        estimatedCost: '$5-15',
+        safetyTips: ['Resistors are small - keep them organized in a box', 'Don\'t lose them - they\'re cheap but easy to misplace']
       },
       {
         name: 'LED Kit',
         category: 'Hardware',
-        description: 'Various colored LEDs for testing',
-        estimatedCost: '$5-10'
+        description: 'Colorful lights that glow when electricity flows through them',
+        why: 'LEDs show you when your circuit is working! They\'re fun, safe, and use very little electricity.',
+        howToUse: 'LEDs have a long leg (positive) and short leg (negative). Connect the long leg to positive and short leg to negative through a resistor.',
+        estimatedCost: '$5-10',
+        safetyTips: ['Always use a resistor with an LED - without it, the LED will burn out', 'Don\'t look directly into a bright LED for too long']
+      },
+      {
+        name: 'Battery Holder',
+        category: 'Hardware',
+        description: 'A case that holds batteries and connects them to your circuit',
+        why: 'This safely holds batteries and gives you two wires (positive and negative) to connect to your circuit.',
+        howToUse: 'Put batteries in the holder, then connect the red wire (positive) and black wire (negative) to your circuit.',
+        estimatedCost: '$3-8',
+        safetyTips: ['Check that batteries are installed correctly before using', 'Remove batteries if you won\'t use the circuit for a while']
       }
     ],
     modules: [
       {
         id: 'e101-m1',
-        title: '1.1: Introduction to Electricity',
-        description: 'Voltage, Current, Resistance (Ohm\'s Law), Power (Joule\'s Law)',
-        duration: '45 minutes',
+        title: '1: What is Electricity?',
+        description: 'Understanding voltage, current, and resistance in simple terms',
+        duration: '20 minutes',
         difficulty: 'beginner',
         content: `
-          <h2>Introduction to Electricity</h2>
-          <p>Electricity is the movement of electrons through a conductor. To understand electronics, we must define the three fundamental properties of a circuit.</p>
+          <h2>What is Electricity?</h2>
+          <p>Electricity is moving electrons (tiny particles) flowing through wires and parts. Think of it like water flowing through a pipe!</p>
           
-          <h3>Voltage (V)</h3>
-          <p>Voltage is the electrical potential difference between two points. It is the "pressure" that pushes electrons through a loop.</p>
+          <h3>Three Important Ideas:</h3>
+          
+          <h4>Voltage (V) - The Push</h4>
+          <p>Voltage is like the pressure that pushes electricity through a circuit. A bigger push means more power.</p>
           <ul>
+            <li><strong>Analogy:</strong> Water pressure in a hose - higher pressure pushes water faster</li>
             <li><strong>Unit:</strong> Volts (V)</li>
-            <li><strong>Analogy:</strong> Water pressure in a pipe</li>
+            <li><strong>Example:</strong> A battery is usually 1.5V, 9V, or 12V</li>
           </ul>
           
-          <h3>Current (I)</h3>
-          <p>Current is the rate at which charge flows past a point in a circuit.</p>
+          <h4>Current (I) - The Flow</h4>
+          <p>Current is how much electricity is flowing. It's like measuring how much water comes out of a faucet.</p>
           <ul>
-            <li><strong>Unit:</strong> Amperes (A)</li>
-            <li><strong>Analogy:</strong> The volume of water flowing through the pipe</li>
+            <li><strong>Analogy:</strong> The amount of water flowing through a pipe</li>
+            <li><strong>Unit:</strong> Amperes or Amps (A)</li>
+            <li><strong>Example:</strong> An LED uses about 0.02 Amps (20 milliamps)</li>
           </ul>
           
-          <h3>Resistance (R)</h3>
-          <p>Resistance is the opposition to the flow of current. Every material (except superconductors) has some level of resistance.</p>
+          <h4>Resistance (R) - The Obstacle</h4>
+          <p>Resistance slows down electricity, just like a narrow pipe slows down water.</p>
           <ul>
+            <li><strong>Analogy:</strong> A narrow pipe is harder for water to flow through</li>
             <li><strong>Unit:</strong> Ohms (Ω)</li>
-            <li><strong>Analogy:</strong> The size of the pipe (narrower pipe = higher resistance)</li>
+            <li><strong>Example:</strong> An LED needs about 220 Ohms of resistance to be safe</li>
           </ul>
           
-          <h2>Ohm's Law</h2>
-          <p>Ohm's Law defines the linear relationship between Voltage, Current, and Resistance:</p>
-          <p><strong>V = I × R</strong></p>
+          <h2>The Golden Rule: Ohm's Law</h2>
+          <p>There's a simple rule that connects voltage, current, and resistance:</p>
+          <p><strong>Voltage = Current × Resistance</strong></p>
+          <p>Or: <strong>V = I × R</strong></p>
           
-          <h3>Derived Formulas:</h3>
-          <ul>
-            <li>To find Current: <strong>I = V / R</strong></li>
-            <li>To find Resistance: <strong>R = V / I</strong></li>
-          </ul>
+          <p>This means: If you know two of these numbers, you can calculate the third!</p>
           
-          <h2>Power (Joule's Law)</h2>
-          <p>Power is the rate at which electrical energy is consumed or converted into another form (like heat).</p>
-          <p><strong>P = V × I</strong></p>
-          <p>Or substituting Ohm's Law: <strong>P = I² × R</strong></p>
+          <h2>Power - How Much Energy is Used</h2>
+          <p>Power tells us how much energy a device uses. A brighter LED uses more power than a dim one.</p>
+          <p><strong>Power = Voltage × Current</strong></p>
+          <p>Or: <strong>P = V × I</strong></p>
+          <p><strong>Unit:</strong> Watts (W)</p>
         `,
-        codeExamples: [],
         practiceProblems: [
-          'A circuit has a 12V battery and a measured current of 2A. What is the total resistance?',
-          'An LED draws 20mA (0.02A) at 3V. How much power is it consuming?'
+          'If a battery gives 9V and an LED uses 0.02A, how much power is the LED using? (Answer: 0.18W)',
+          'A resistor has 220 Ohms. If 0.02A flows through it, what voltage is across it? (Answer: 4.4V)',
+          'A toy motor uses 6V and 0.5A. How much power does it use? (Answer: 3W)'
         ],
         references: [
           {
-            title: 'Ohm\'s Law - Wikipedia',
-            url: 'https://en.wikipedia.org/wiki/Ohm%27s_law',
-            type: 'article'
-          },
-          {
-            title: 'Joule heating - Wikipedia',
-            url: 'https://en.wikipedia.org/wiki/Joule_heating',
-            type: 'article'
+            title: 'Khan Academy - Electricity Basics',
+            url: 'https://www.khanacademy.org/science/physics/circuits-topic',
+            type: 'video'
           }
         ]
       },
       {
         id: 'e101-m2',
-        title: '1.2: Essential Passive Components',
-        description: 'Resistors, Capacitors, and Inductors',
-        duration: '50 minutes',
+        title: '2: Parts of a Circuit',
+        description: 'Learn about resistors, capacitors, LEDs, and other important parts',
+        duration: '25 minutes',
         difficulty: 'beginner',
         content: `
-          <h2>Essential Passive Components</h2>
-          <p>Passive components are electronic elements that do not require an external power source to operate.</p>
+          <h2>Important Circuit Parts</h2>
+          <p>Just like a car needs an engine, wheels, and steering wheel, circuits need different parts to work. Let's learn about the most important ones!</p>
           
-          <h3>Resistors</h3>
-          <p>Resistors limit the flow of electric current and are one of the most fundamental components in electronics.</p>
-          <p><strong>Color Code:</strong> Resistors use color bands to indicate their resistance value.</p>
+          <h3>Resistors - The Speed Bumps</h3>
+          <p>Resistors slow down electricity. They're like speed bumps on a road!</p>
           <ul>
-            <li>First band: First digit</li>
-            <li>Second band: Second digit</li>
-            <li>Third band: Multiplier (power of 10)</li>
-            <li>Fourth band: Tolerance</li>
+            <li><strong>Color Code:</strong> Resistors have colored bands that tell you their value</li>
+            <li><strong>Why use them:</strong> To protect delicate parts like LEDs from too much current</li>
+            <li><strong>How to read them:</strong> Use a resistor color code chart (available online)</li>
           </ul>
           
-          <h3>Capacitors</h3>
-          <p>Capacitors store electrical energy in an electric field. They are used for filtering, coupling, and energy storage.</p>
+          <h3>LEDs - The Lights</h3>
+          <p>LEDs (Light Emitting Diodes) are special lights that glow when electricity flows through them.</p>
           <ul>
-            <li><strong>Electrolytic:</strong> Polarized, high capacitance</li>
-            <li><strong>Ceramic:</strong> Non-polarized, small capacitance</li>
-            <li><strong>Film:</strong> Non-polarized, stable</li>
+            <li><strong>Important:</strong> LEDs have a direction - the long leg must connect to positive!</li>
+            <li><strong>Always use a resistor:</strong> Without a resistor, an LED burns out immediately</li>
+            <li><strong>Colors:</strong> Red, green, blue, yellow, and white LEDs are available</li>
           </ul>
           
-          <h3>Inductors</h3>
-          <p>Inductors store energy in a magnetic field. They oppose changes in current flow.</p>
+          <h3>Switches - The On/Off Button</h3>
+          <p>Switches let you turn electricity on and off, just like a light switch in your house.</p>
           <ul>
-            <li>Used in filters and power supplies</li>
-            <li>Measured in Henries (H)</li>
+            <li><strong>Types:</strong> Push buttons, toggle switches, slide switches</li>
+            <li><strong>How they work:</strong> They break or complete the circuit</li>
+          </ul>
+          
+          <h3>Capacitors - The Energy Tanks</h3>
+          <p>Capacitors store electrical energy temporarily, like a tiny battery.</p>
+          <ul>
+            <li><strong>Electrolytic:</strong> Can store more energy, but have a direction (positive and negative legs)</li>
+            <li><strong>Ceramic:</strong> Smaller, no direction needed</li>
+          </ul>
+          
+          <h3>Diodes - The One-Way Valves</h3>
+          <p>Diodes let electricity flow in only one direction, like a one-way street.</p>
+          <ul>
+            <li><strong>Use:</strong> Protecting circuits from reversed batteries</li>
+            <li><strong>Direction:</strong> Important! The black band shows the direction</li>
           </ul>
         `,
-        codeExamples: [],
         practiceProblems: [
-          'Decode a resistor with color bands: Brown, Black, Red, Gold',
-          'What is the capacitance of a capacitor marked as 100µF?'
-        ],
-        references: [
-          {
-            title: 'Resistor Color Code - Electronics Tutorials',
-            url: 'https://www.electronics-tutorials.ws/resistor/res_2.html',
-            type: 'article'
-          }
+          'What color resistor band means the number 2?',
+          'Why do LEDs need resistors?',
+          'What\'s the difference between a capacitor and a battery?'
         ]
       }
     ],
     learningOutcomes: [
-      'Understand voltage, current, and resistance',
-      'Apply Ohm\'s Law to solve circuit problems',
-      'Identify and use passive components',
-      'Analyze basic circuits',
-      'Measure electrical properties with a multimeter'
+      'Understand what electricity is and how it flows',
+      'Learn voltage, current, and resistance',
+      'Use a breadboard to build circuits',
+      'Read resistor color codes',
+      'Build simple circuits with LEDs',
+      'Use a multimeter to test circuits'
     ]
   },
   {
     id: 'arduino-basics',
     title: 'Arduino Programming Basics',
     slug: 'arduino-basics',
-    description: 'Learn to program Arduino microcontrollers from scratch',
-    longDescription: 'This course teaches you how to program Arduino boards using the Arduino IDE. You\'ll learn digital I/O, analog I/O, and how to control real-world devices.',
+    description: 'Learn to program Arduino boards and control electronics',
+    longDescription: 'Arduino is a simple computer that lets you control electronics with code! Learn to write programs that make LEDs blink, read sensors, and control motors.',
     category: 'Microcontrollers',
     difficulty: 'beginner',
     duration: '5 weeks',
@@ -220,298 +268,205 @@ export const courses: Course[] = [
       {
         name: 'Arduino UNO',
         category: 'Hardware',
-        description: 'Popular microcontroller board',
-        estimatedCost: '$20-30'
+        description: 'A beginner-friendly microcontroller board',
+        why: 'Arduino is easy to learn and has lots of tutorials and community support. Perfect for beginners!',
+        howToUse: 'Connect via USB to your computer. Write code in the Arduino IDE and upload it to the board.',
+        estimatedCost: '$20-30',
+        link: 'https://digilog.pk/',
+        safetyTips: ['Don\'t connect more than 5V to the pins', 'Be careful with the USB port - don\'t force the cable']
       },
       {
         name: 'Arduino IDE',
         category: 'Software',
-        description: 'Free development environment',
+        description: 'Free software to write and upload code to Arduino',
+        why: 'The Arduino IDE is simple and designed for beginners. It has built-in examples to learn from.',
+        howToUse: 'Download from arduino.cc, install, and connect your Arduino board. Write code and click Upload!',
         optional: false,
         link: 'https://www.arduino.cc/en/software'
       },
       {
-        name: 'USB Cable',
+        name: 'USB Cable (Type A to Type B)',
         category: 'Hardware',
-        description: 'Type A to Type B for Arduino UNO',
-        estimatedCost: '$5-10'
-      },
-      {
-        name: 'Breadboard',
-        category: 'Hardware',
-        description: 'For prototyping circuits',
-        estimatedCost: '$5-15'
-      },
-      {
-        name: 'Jumper Wires',
-        category: 'Hardware',
-        description: 'For connecting components',
+        description: 'Connects Arduino to your computer',
+        why: 'This cable powers the Arduino and lets you upload code from your computer.',
+        howToUse: 'Plug into the USB port on the Arduino board and your computer.',
         estimatedCost: '$5-10'
       }
     ],
     modules: [
       {
         id: 'ard-m1',
-        title: '3.1: What is a Microcontroller?',
-        description: 'Understanding microcontroller architecture and basics',
-        duration: '40 minutes',
+        title: '1: What is Arduino?',
+        description: 'Introduction to microcontrollers and Arduino',
+        duration: '20 minutes',
         difficulty: 'beginner',
         content: `
           <h2>What is a Microcontroller?</h2>
-          <p>A microcontroller is a small computer on a single integrated circuit (IC) containing a processor, memory, and input/output (I/O) peripherals.</p>
+          <p>A microcontroller is a tiny computer that can control electronics. It's like giving a robot a brain!</p>
           
-          <h3>Key Components:</h3>
+          <h3>Arduino Basics</h3>
+          <p>Arduino is a platform that makes it easy to program microcontrollers. Instead of complicated code, you write simple instructions.</p>
+          
+          <h3>What Can Arduino Do?</h3>
           <ul>
-            <li><strong>CPU:</strong> Executes instructions</li>
-            <li><strong>RAM:</strong> Temporary memory for running programs</li>
-            <li><strong>ROM/Flash:</strong> Permanent memory for storing programs</li>
-            <li><strong>I/O Ports:</strong> Digital and analog pins for interfacing with external devices</li>
+            <li>Turn LEDs on and off</li>
+            <li>Read sensors (temperature, light, distance)</li>
+            <li>Control motors</li>
+            <li>Make sounds</li>
+            <li>Connect to the internet (with WiFi shield)</li>
           </ul>
           
-          <h3>Microcontroller vs Microprocessor:</h3>
-          <p>Microcontrollers are designed for specific tasks and include memory and I/O on the same chip. Microprocessors are more powerful but require external components.</p>
-          
-          <h3>Arduino Platform:</h3>
-          <p>Arduino is an open-source electronics platform based on easy-to-use hardware and software. The Arduino UNO is the most popular beginner board.</p>
+          <h3>Arduino UNO Pins</h3>
+          <ul>
+            <li><strong>Digital pins (0-13):</strong> On/off signals (like a light switch)</li>
+            <li><strong>Analog pins (A0-A5):</strong> Read varying voltages (like a dimmer)</li>
+            <li><strong>Power pins:</strong> 5V and Ground (GND)</li>
+          </ul>
         `,
-        codeExamples: [],
-        practiceProblems: [
-          'What is the difference between RAM and Flash memory?',
-          'How many I/O pins does an Arduino UNO have?'
-        ],
-        references: [
-          {
-            title: 'Arduino Official Website',
-            url: 'https://www.arduino.cc/',
-            type: 'documentation'
-          }
+        codeExamples: [
+          'pinMode(13, OUTPUT);  // Set pin 13 as output',
+          'digitalWrite(13, HIGH);  // Turn pin 13 on',
+          'digitalWrite(13, LOW);   // Turn pin 13 off'
         ]
       },
       {
         id: 'ard-m2',
-        title: '3.2: Getting Started with Arduino',
-        description: 'Setting up Arduino IDE and writing your first program',
-        duration: '60 minutes',
+        title: '2: Reading Sensors',
+        description: 'Use Arduino to read sensor values',
+        duration: '25 minutes',
         difficulty: 'beginner',
         content: `
-          <h2>Getting Started with Arduino</h2>
+          <h2>Reading Analog Values</h2>
+          <p>Arduino can read sensors that give different voltage levels. This is called analog input.</p>
           
-          <h3>Installing Arduino IDE:</h3>
-          <ol>
-            <li>Go to https://www.arduino.cc/en/software</li>
-            <li>Download the installer for your operating system</li>
-            <li>Run the installer and follow the instructions</li>
-            <li>Open Arduino IDE</li>
-          </ol>
+          <h3>Analog vs Digital</h3>
+          <ul>
+            <li><strong>Digital:</strong> Only on (1) or off (0)</li>
+            <li><strong>Analog:</strong> Can be any value from 0 to 1023</li>
+          </ul>
           
-          <h3>Arduino Program Structure:</h3>
-          <p>Every Arduino program has two main functions:</p>
+          <h3>Reading a Sensor</h3>
+          <p>Use analogRead() to read a sensor value:</p>
+          <pre><code>int sensorValue = analogRead(A0);  // Read pin A0</code></pre>
           
-          <h4>setup():</h4>
-          <p>Runs once when the board is powered on or reset. Used for initialization.</p>
-          
-          <h4>loop():</h4>
-          <p>Runs repeatedly after setup(). Contains the main program logic.</p>
-          
-          <h3>Your First Program:</h3>
-          <p>The classic "Blink" program flashes an LED:</p>
-          <pre><code>
-void setup() {
-  pinMode(13, OUTPUT);  // Set pin 13 as output
-}
-
-void loop() {
-  digitalWrite(13, HIGH);  // Turn LED on
-  delay(1000);             // Wait 1 second
-  digitalWrite(13, LOW);   // Turn LED off
-  delay(1000);             // Wait 1 second
-}
-          </code></pre>
+          <p>The value will be between 0 and 1023, where:</p>
+          <ul>
+            <li>0 = 0 Volts</li>
+            <li>1023 = 5 Volts</li>
+          </ul>
         `,
         codeExamples: [
-          'void setup() { pinMode(13, OUTPUT); }',
-          'void loop() { digitalWrite(13, HIGH); delay(1000); digitalWrite(13, LOW); delay(1000); }'
-        ],
-        practiceProblems: [
-          'Modify the blink program to blink 3 times per second instead of 1 time per second',
-          'Write a program that blinks an LED on pin 9'
-        ],
-        references: [
-          {
-            title: 'Arduino Language Reference',
-            url: 'https://www.arduino.cc/reference/en/',
-            type: 'documentation'
-          }
+          'int value = analogRead(A0);  // Read analog pin A0',
+          'Serial.println(value);  // Print the value to the computer',
+          'if (value > 500) { digitalWrite(13, HIGH); }  // Turn on LED if value is high'
         ]
       }
     ],
     learningOutcomes: [
-      'Understand microcontroller basics',
-      'Set up Arduino IDE',
-      'Write and upload Arduino sketches',
-      'Control digital pins',
-      'Read analog inputs',
-      'Create interactive projects'
+      'Understand how microcontrollers work',
+      'Write simple Arduino programs',
+      'Control digital outputs (LEDs, motors)',
+      'Read analog inputs (sensors)',
+      'Build interactive electronics projects',
+      'Debug and troubleshoot code'
     ]
   },
   {
     id: 'esp32-iot',
     title: 'ESP32 IoT Development',
     slug: 'esp32-iot',
-    description: 'Build connected IoT devices with ESP32 and WiFi',
-    longDescription: 'Learn to develop Internet of Things (IoT) applications using the ESP32 microcontroller with built-in WiFi and Bluetooth capabilities.',
+    description: 'Build connected IoT devices with WiFi and Bluetooth',
+    longDescription: 'The ESP32 is like Arduino\'s powerful cousin! It has WiFi and Bluetooth built-in, so you can build devices that connect to the internet and talk to your phone.',
     category: 'IoT & Connectivity',
     difficulty: 'intermediate',
-    duration: '7 weeks',
+    duration: '6 weeks',
     tools: [
       {
         name: 'ESP32 Development Board',
         category: 'Hardware',
-        description: 'Microcontroller with WiFi and Bluetooth',
-        estimatedCost: '$10-20'
+        description: 'A powerful microcontroller with WiFi and Bluetooth',
+        why: 'ESP32 is more powerful than Arduino and has wireless built-in. Perfect for IoT projects!',
+        howToUse: 'Connect via USB. Use Arduino IDE or PlatformIO to write and upload code.',
+        estimatedCost: '$10-20',
+        link: 'https://digilog.pk/',
+        safetyTips: ['Don\'t connect more than 3.3V to the pins (different from Arduino!)', 'Be careful with the antenna - don\'t bend it']
       },
       {
         name: 'Arduino IDE or PlatformIO',
         category: 'Software',
-        description: 'Development environment',
+        description: 'Software to program ESP32',
+        why: 'Both work with ESP32. Arduino IDE is simpler, PlatformIO is more powerful.',
+        howToUse: 'Install ESP32 board support in Arduino IDE, or install PlatformIO extension in VS Code.',
         optional: false,
         link: 'https://platformio.org/'
       },
       {
-        name: 'USB Cable',
+        name: 'USB Cable (Micro USB)',
         category: 'Hardware',
-        description: 'Micro USB for ESP32',
+        description: 'Connects ESP32 to your computer',
+        why: 'Powers the ESP32 and lets you upload code.',
+        howToUse: 'Plug into the Micro USB port on the ESP32 board.',
         estimatedCost: '$5-10'
       },
       {
         name: 'WiFi Network',
         category: 'Infrastructure',
-        description: 'For connecting ESP32 to internet',
+        description: 'A WiFi network for your ESP32 to connect to',
+        why: 'ESP32 needs WiFi to connect to the internet and send/receive data.',
+        howToUse: 'Connect to any WiFi network using your SSID and password in the code.',
         optional: false
       }
     ],
     modules: [
       {
         id: 'esp-m1',
-        title: '4.1: Introduction to the ESP32',
-        description: 'ESP32 architecture, features, and setup',
-        duration: '45 minutes',
+        title: '1: ESP32 Basics',
+        description: 'Introduction to ESP32 and its features',
+        duration: '20 minutes',
         difficulty: 'intermediate',
         content: `
-          <h2>Introduction to the ESP32</h2>
-          <p>The ESP32 is a powerful microcontroller with integrated WiFi and Bluetooth, making it ideal for IoT applications.</p>
+          <h2>What is ESP32?</h2>
+          <p>ESP32 is a powerful microcontroller with WiFi and Bluetooth built-in. It's like Arduino on steroids!</p>
           
-          <h3>Key Features:</h3>
+          <h3>ESP32 vs Arduino</h3>
           <ul>
-            <li><strong>Dual-core processor:</strong> Run multiple tasks simultaneously</li>
-            <li><strong>WiFi:</strong> 802.11 b/g/n connectivity</li>
-            <li><strong>Bluetooth:</strong> Classic and BLE support</li>
-            <li><strong>30+ GPIO pins:</strong> More I/O than Arduino</li>
-            <li><strong>Built-in sensors:</strong> Temperature, touch, ADC</li>
-            <li><strong>Low power modes:</strong> Sleep and deep sleep</li>
+            <li><strong>Speed:</strong> ESP32 is 15x faster than Arduino</li>
+            <li><strong>Memory:</strong> ESP32 has 100x more memory</li>
+            <li><strong>WiFi:</strong> ESP32 has WiFi built-in (Arduino needs a shield)</li>
+            <li><strong>Bluetooth:</strong> ESP32 has Bluetooth (Arduino doesn't)</li>
+            <li><strong>Voltage:</strong> ESP32 uses 3.3V (Arduino uses 5V) - IMPORTANT!</li>
           </ul>
           
-          <h3>Comparison with Arduino:</h3>
-          <table>
-            <tr>
-              <th>Feature</th>
-              <th>Arduino UNO</th>
-              <th>ESP32</th>
-            </tr>
-            <tr>
-              <td>Processor Speed</td>
-              <td>16 MHz</td>
-              <td>240 MHz (dual-core)</td>
-            </tr>
-            <tr>
-              <td>RAM</td>
-              <td>2 KB</td>
-              <td>520 KB</td>
-            </tr>
-            <tr>
-              <td>WiFi</td>
-              <td>No</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>Bluetooth</td>
-              <td>No</td>
-              <td>Yes</td>
-            </tr>
-            <tr>
-              <td>GPIO Pins</td>
-              <td>14</td>
-              <td>30+</td>
-            </tr>
-          </table>
-          
-          <h3>Setting Up ESP32:</h3>
-          <ol>
-            <li>Install Arduino IDE or PlatformIO</li>
-            <li>Add ESP32 board support</li>
-            <li>Connect ESP32 via USB</li>
-            <li>Select board and port in IDE</li>
-            <li>Upload your first sketch</li>
-          </ol>
-        `,
-        codeExamples: [],
-        practiceProblems: [
-          'What are the main advantages of ESP32 over Arduino UNO?',
-          'How many GPIO pins does ESP32 have?'
-        ],
-        references: [
-          {
-            title: 'ESP32 Official Documentation',
-            url: 'https://docs.espressif.com/projects/esp-idf/en/latest/esp32/',
-            type: 'documentation'
-          }
-        ]
+          <h3>What Can You Build?</h3>
+          <ul>
+            <li>Weather stations that send data to the cloud</li>
+            <li>Smart home devices that you control from your phone</li>
+            <li>Robots that connect to the internet</li>
+            <li>IoT sensors that monitor your room</li>
+          </ul>
+        `
       },
       {
         id: 'esp-m2',
-        title: '4.3: Connecting to the Internet',
-        description: 'WiFi connectivity and web server basics',
-        duration: '55 minutes',
+        title: '2: Building a Web Server',
+        description: 'Create a web server on your ESP32',
+        duration: '25 minutes',
         difficulty: 'intermediate',
         content: `
-          <h2>Connecting ESP32 to the Internet</h2>
-          <p>The ESP32 can connect to WiFi networks and act as both a client and server.</p>
+          <h2>Web Servers on ESP32</h2>
+          <p>Your ESP32 can act like a tiny web server! You can access it from any device on your WiFi network.</p>
           
-          <h3>WiFi Modes:</h3>
+          <h3>How It Works</h3>
           <ul>
-            <li><strong>Station (STA):</strong> Connects to existing WiFi network</li>
-            <li><strong>Access Point (AP):</strong> Creates its own WiFi network</li>
-            <li><strong>Both:</strong> Can do both simultaneously</li>
+            <li>ESP32 connects to WiFi and gets an IP address</li>
+            <li>You type the IP address in your browser</li>
+            <li>ESP32 sends a web page to your browser</li>
+            <li>You can click buttons to control the ESP32!</li>
           </ul>
           
-          <h3>Connecting to WiFi:</h3>
+          <h3>Basic Web Server Code</h3>
           <pre><code>
 #include &lt;WiFi.h&gt;
-
-const char* ssid = "Your_SSID";
-const char* password = "Your_Password";
-
-void setup() {
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
-  
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  
-  Serial.println("WiFi connected!");
-  Serial.println(WiFi.localIP());
-}
-
-void loop() {
-  // Your code here
-}
-          </code></pre>
-          
-          <h3>Creating a Web Server:</h3>
-          <p>The ESP32 can host a web server and serve web pages to clients on your network.</p>
-          <pre><code>
 #include &lt;WebServer.h&gt;
 
 WebServer server(80);
@@ -521,7 +476,7 @@ void handleRoot() {
 }
 
 void setup() {
-  WiFi.begin(ssid, password);
+  WiFi.begin("SSID", "password");
   server.on("/", handleRoot);
   server.begin();
 }
@@ -530,32 +485,17 @@ void loop() {
   server.handleClient();
 }
           </code></pre>
-        `,
-        codeExamples: [
-          '#include <WiFi.h>',
-          'WiFi.begin(ssid, password);',
-          'server.send(200, "text/html", "<h1>Hello</h1>");'
-        ],
-        practiceProblems: [
-          'Write code to connect ESP32 to your home WiFi network',
-          'Create a simple web server that displays "Hello World"'
-        ],
-        references: [
-          {
-            title: 'ESP32 WiFi Library',
-            url: 'https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html',
-            type: 'documentation'
-          }
-        ]
+        `
       }
     ],
     learningOutcomes: [
-      'Understand ESP32 architecture and capabilities',
+      'Understand ESP32 capabilities and differences from Arduino',
       'Set up ESP32 development environment',
       'Connect ESP32 to WiFi networks',
       'Create web servers on ESP32',
       'Build IoT applications',
-      'Implement remote control systems'
+      'Control devices from a web browser',
+      'Build smart home projects'
     ]
   }
 ];
