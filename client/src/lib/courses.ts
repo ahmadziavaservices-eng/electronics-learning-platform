@@ -30,6 +30,16 @@ export interface Reference {
   type: 'article' | 'documentation' | 'video' | 'book' | 'tool';
 }
 
+export interface VideoTutorial {
+  id: string;
+  title: string;
+  description: string;
+  duration: string;
+  videoUrl: string;
+  thumbnail?: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+}
+
 export interface ModuleContent {
   id: string;
   title: string;
@@ -42,6 +52,7 @@ export interface ModuleContent {
   references?: Reference[];
   prerequisites?: string[];
   diyProjects?: DIYProject[];
+  videoTutorials?: VideoTutorial[];
 }
 
 export interface Course {

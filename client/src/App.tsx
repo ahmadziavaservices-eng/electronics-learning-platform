@@ -9,6 +9,7 @@ import Courses from "./pages/Courses";
 import CourseLanding from "./pages/CourseLanding";
 import CourseModules from "./pages/CourseModules";
 import ModuleDetail from "./pages/ModuleDetail";
+import Marketplace from "./pages/Marketplace";
 
 
 function Router() {
@@ -16,6 +17,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/courses"} component={Courses} />
+      <Route path={"/marketplace"} component={Marketplace} />
       <Route path={"/course/:slug"} component={CourseLanding} />
       <Route path={"/course/:slug/modules"} component={CourseModules} />
       <Route path={"/course/:slug/module/:moduleId"} component={ModuleDetail} />
