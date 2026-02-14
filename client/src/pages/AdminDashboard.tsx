@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Plus, Edit2, Trash2, Save, X, ArrowLeft } from 'lucide-react';
+import { ProtectedAdminPage } from '@/components/GitHubAuth';
 
-export default function AdminDashboard() {
+function AdminDashboardContent() {
   const [activeTab, setActiveTab] = useState('courses');
   const [editingItem, setEditingItem] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white relative">
       {/* Header */}
       <div className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
@@ -352,5 +353,13 @@ export default function AdminDashboard() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function AdminDashboard() {
+  return (
+    <ProtectedAdminPage>
+      <AdminDashboardContent />
+    </ProtectedAdminPage>
   );
 }
