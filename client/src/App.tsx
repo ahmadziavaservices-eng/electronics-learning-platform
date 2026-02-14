@@ -11,6 +11,7 @@ import CourseModules from "./pages/CourseModules";
 import ModuleDetail from "./pages/ModuleDetail";
 import Marketplace from "./pages/Marketplace";
 import AdminDashboard from "./pages/AdminDashboard";
+import Calculators from "./pages/Calculators";
 
 
 function Router() {
@@ -19,6 +20,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/courses"} component={Courses} />
       <Route path={"/marketplace"} component={Marketplace} />
+      <Route path={"/calculators"} component={Calculators} />
       <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/course/:slug"} component={CourseLanding} />
       <Route path={"/course/:slug/modules"} component={CourseModules} />
