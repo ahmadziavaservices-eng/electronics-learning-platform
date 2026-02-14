@@ -9,6 +9,9 @@ import { PowerCalculator } from '@/components/calculators/PowerCalculator';
 import { ResistorColorCode } from '@/components/calculators/ResistorColorCode';
 import { LEDResistorCalculator } from '@/components/calculators/LEDResistorCalculator';
 import { UnitConverter } from '@/components/calculators/UnitConverter';
+import { SMDResistorCalculator } from '@/components/calculators/SMDResistorCalculator';
+import { VoltageDividerCalculator } from '@/components/calculators/VoltageDividerCalculator';
+import { RCTimeCalculator } from '@/components/calculators/RCTimeCalculator';
 
 export default function Calculators() {
   const [activeCalculator, setActiveCalculator] = useState('ohms-law');
@@ -168,22 +171,10 @@ export default function Calculators() {
           {activeCalculator === 'ohms-law' && <OhmsLawCalculator />}
           {activeCalculator === 'power' && <PowerCalculator />}
           {activeCalculator === 'resistor-color' && <ResistorColorCode />}
-          {activeCalculator === 'smd-code' && (
-            <Card className="bg-slate-900 border-slate-700 p-8">
-              <p className="text-slate-400">SMD Resistor Code Calculator coming soon...</p>
-            </Card>
-          )}
+          {activeCalculator === 'smd-code' && <SMDResistorCalculator />}
           {activeCalculator === 'led-resistor' && <LEDResistorCalculator />}
-          {activeCalculator === 'voltage-divider' && (
-            <Card className="bg-slate-900 border-slate-700 p-8">
-              <p className="text-slate-400">Voltage Divider Calculator coming soon...</p>
-            </Card>
-          )}
-          {activeCalculator === 'rc-time' && (
-            <Card className="bg-slate-900 border-slate-700 p-8">
-              <p className="text-slate-400">RC Time Constant Calculator coming soon...</p>
-            </Card>
-          )}
+          {activeCalculator === 'voltage-divider' && <VoltageDividerCalculator />}
+          {activeCalculator === 'rc-time' && <RCTimeCalculator />}
           {activeCalculator === 'unit-converter' && <UnitConverter />}
         </div>
 

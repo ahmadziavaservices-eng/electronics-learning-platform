@@ -3,8 +3,10 @@ import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ArrowRight, BookOpen, Code, FileText, ExternalLink, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, Code, FileText, ExternalLink, Clock, Video, Zap } from 'lucide-react';
 import { getCourseBySlug, getModuleById } from '@/lib/courses';
+import { VideoTutorials } from '@/components/VideoTutorials';
+import { PracticeProblems } from '@/components/PracticeProblems';
 
 export default function ModuleDetail() {
   const [match, params] = useRoute('/course/:slug/module/:moduleId');
@@ -137,6 +139,32 @@ export default function ModuleDetail() {
                 </CardContent>
               </Card>
             )}
+
+            {/* Video Tutorials */}
+            <Card className="bg-slate-800 border-slate-700 mb-8">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center gap-2">
+                  <Video className="w-5 h-5" />
+                  Video Tutorials
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-400">Video tutorials for this module coming soon. Check back soon!</p>
+              </CardContent>
+            </Card>
+
+            {/* Practice Problems */}
+            <Card className="bg-slate-800 border-slate-700 mb-8">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  Practice Problems
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-400">Interactive practice problems coming soon. Check back soon!</p>
+              </CardContent>
+            </Card>
 
             {/* References */}
             {module.references && module.references.length > 0 && (
