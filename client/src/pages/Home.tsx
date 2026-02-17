@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, BookOpen, Zap, Wifi, Users, Award, Clock } from 'lucide-react';
 import { courses, courseCategories } from '@/lib/courses';
+import SocialMediaLinks from '@/components/SocialMediaLinks';
 
 export default function Home() {
   const featuredCourses = courses.slice(0, 3);
@@ -266,6 +267,11 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Social Media Links Section */}
+      <section className="bg-slate-800/50 border-y border-slate-700 py-12">
+        <SocialMediaLinks />
       </section>
 
       {/* CTA Section */}
