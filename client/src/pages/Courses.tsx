@@ -126,7 +126,7 @@ export default function Courses() {
                 <p className="text-slate-400 text-lg">No courses found matching your filters.</p>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="grid gap-6">
                 {filteredCourses.map(course => (
                   <Link key={course.id} href={`/course/${course.slug}`}>
                     <Card className="bg-slate-800 border-slate-700 hover:border-blue-500 transition cursor-pointer">
@@ -154,7 +154,7 @@ export default function Courses() {
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <p className="text-sm text-slate-400 mb-3 font-semibold">Learning Outcomes:</p>
-                            <ul className="space-y-2">
+                            <ul className="space-y-2 leading-relaxed">
                               {course.learningOutcomes.slice(0, 4).map((outcome, idx) => (
                                 <li key={idx} className="text-sm text-slate-300 flex gap-2">
                                   <span className="text-blue-400 flex-shrink-0">✓</span>
@@ -165,7 +165,7 @@ export default function Courses() {
                           </div>
                           <div>
                             <p className="text-sm text-slate-400 mb-3 font-semibold">What You'll Need:</p>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 leading-relaxed">
                               {course.tools.slice(0, 4).map((tool, idx) => (
                                 <Badge key={idx} variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-xs">
                                   {tool.name}

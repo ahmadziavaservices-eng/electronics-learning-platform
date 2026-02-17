@@ -54,9 +54,9 @@ export default function CourseModules() {
       <div className="container mx-auto px-4 py-12">
         {/* Page Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">{course.title}</h1>
-          <p className="text-xl text-slate-300 mb-6">{course.longDescription}</p>
-          <div className="flex items-center gap-4">
+          <h1 className="text-4xl font-bold mb-4 leading-tight">{course.title}</h1>
+          <p className="text-xl text-slate-300 mb-6 leading-relaxed">{course.longDescription}</p>
+          <div className="flex items-center gap-4 leading-tight">
             <Badge className={getDifficultyColor(course.difficulty)}>
               {course.difficulty}
             </Badge>
@@ -71,7 +71,7 @@ export default function CourseModules() {
         </div>
 
         {/* Modules Grid */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           {course.modules.map((module, idx) => (
             <Link key={module.id} href={`/course/${course.slug}/module/${module.id}`}>
               <Card className="bg-slate-800 border-slate-700 hover:border-blue-500 transition cursor-pointer group">
@@ -86,10 +86,10 @@ export default function CourseModules() {
                           {module.difficulty}
                         </Badge>
                       </div>
-                      <CardTitle className="text-white text-xl group-hover:text-blue-400 transition">
+                      <CardTitle className="text-white text-xl group-hover:text-blue-400 transition leading-tight">
                         {module.title}
                       </CardTitle>
-                      <CardDescription className="text-slate-300 text-base">
+                      <CardDescription className="text-slate-300 text-base leading-relaxed">
                         {module.description}
                       </CardDescription>
                     </div>

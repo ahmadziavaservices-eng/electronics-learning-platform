@@ -112,11 +112,11 @@ export default function Calculators() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12">
         {/* Category Filter */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-4 text-slate-300">Filter by Category</h2>
-          <div className="flex gap-2 flex-wrap">
+          <h2 className="text-lg font-semibold mb-4 text-slate-300 leading-tight">Filter by Category</h2>
+          <div className="flex gap-3 flex-wrap">
             {categories.map(cat => (
               <Button
                 key={cat}
@@ -134,7 +134,7 @@ export default function Calculators() {
         </div>
 
         {/* Calculator Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {filteredCalculators.map(calc => {
             const Icon = calc.icon;
             return (
