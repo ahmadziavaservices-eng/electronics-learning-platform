@@ -4,6 +4,8 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { AccessibilityProvider } from "./contexts/AccessibilityContext";
+import { AccessibilityPanel } from "./components/AccessibilityPanel";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import CourseLanding from "./pages/CourseLanding";
@@ -51,16 +53,19 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-      >
-        <TooltipProvider>
-          <Toaster />
-          <div role="application" aria-label="Electronics Learning Platform">
-            <Router />
-          </div>
-        </TooltipProvider>
-      </ThemeProvider>
+      <AccessibilityProvider>
+        <ThemeProvider
+          defaultTheme="light"
+        >
+          <TooltipProvider>
+            <Toaster />
+            <AccessibilityPanel />
+            <div role="application" aria-label="Electronics Learning Platform">
+              <Router />
+            </div>
+          </TooltipProvider>
+        </ThemeProvider>
+      </AccessibilityProvider>
     </ErrorBoundary>
   );
 }

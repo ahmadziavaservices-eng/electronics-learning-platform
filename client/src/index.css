@@ -363,4 +363,30 @@
     clip: auto;
     white-space: normal;
   }
+
+  /* Accessibility Utilities */
+  .reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .enhanced-focus *:focus {
+    outline: 3px solid #00f0ff !important;
+    outline-offset: 2px !important;
+  }
+
+  /* High Contrast Theme */
+  .high-contrast {
+    --background: #000000;
+    --foreground: #ffffff;
+    --card: #1a1a1a;
+    --card-foreground: #ffffff;
+    --border: #ffffff;
+    --accent: #ffff00;
+  }
+
+  .high-contrast * {
+    border-color: #ffffff !important;
+  }
 }
