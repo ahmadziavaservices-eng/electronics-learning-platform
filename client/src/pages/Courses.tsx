@@ -41,25 +41,25 @@ export default function Courses() {
       <div className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-8">
           <Link href="/">
-            <a className="text-blue-400 hover:text-blue-300 transition mb-4 inline-flex items-center gap-2">
+            <a className="text-blue-400 hover:text-blue-300 transition mb-4 inline-flex items-center gap-2 leading-tight">
               ← Back to Home
             </a>
           </Link>
-          <h1 className="text-4xl font-bold mb-2">All Courses</h1>
-          <p className="text-slate-300">Choose from our comprehensive collection of electronics and IoT courses</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">All Courses</h1>
+          <p className="text-slate-300 leading-relaxed">Choose from our comprehensive collection of electronics and IoT courses</p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-4 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Sidebar - Filters */}
-          <div className="lg:col-span-1">
+          <div className="md:col-span-1 lg:col-span-1">
             <div className="bg-slate-800 rounded-lg p-6 border border-slate-700 sticky top-24">
-              <h3 className="text-lg font-bold mb-4">Filters</h3>
+              <h3 className="text-lg font-bold mb-4 leading-tight">Filters</h3>
 
               {/* Category Filter */}
               <div className="mb-6">
-                <h4 className="font-semibold text-sm text-slate-300 mb-3">Category</h4>
+                <h4 className="font-semibold text-sm text-slate-300 mb-3 leading-tight">Category</h4>
                 <div className="space-y-2">
                   <button
                     onClick={() => window.location.href = '/courses'}
@@ -89,7 +89,7 @@ export default function Courses() {
 
               {/* Difficulty Filter */}
               <div>
-                <h4 className="font-semibold text-sm text-slate-300 mb-3">Difficulty</h4>
+                <h4 className="font-semibold text-sm text-slate-300 mb-3 leading-tight">Difficulty</h4>
                 <div className="space-y-2">
                   <button
                     onClick={() => setSelectedDifficulty(null)}

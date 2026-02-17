@@ -164,7 +164,7 @@ export default function Calculators() {
 
         {/* Active Calculator */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 leading-tight">
             {calculators.find(c => c.id === activeCalculator)?.name}
           </h2>
 
@@ -183,11 +183,11 @@ export default function Calculators() {
           <CardHeader>
             <CardTitle className="text-cyan-400">💡 About These Calculators</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-slate-300">
-            <p>
+          <CardContent className="space-y-3 text-slate-300 leading-relaxed">
+            <p className="leading-relaxed">
               These calculators are designed to teach <strong>real-world problem solving</strong>. Each calculator includes:
             </p>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm leading-relaxed">
               <li>✓ Real-world problem scenarios you'll actually face</li>
               <li>✓ Step-by-step measurement guides with multimeter instructions</li>
               <li>✓ Safety warnings and common mistakes to avoid</li>
@@ -195,7 +195,7 @@ export default function Calculators() {
               <li>✓ Verification methods to check your work</li>
               <li>✓ Links to related course modules for deeper learning</li>
             </ul>
-            <p className="text-sm pt-2">
+            <p className="text-sm pt-2 leading-relaxed">
               Use these calculators not just to get answers, but to understand <strong>why</strong> the calculation matters and <strong>how</strong> to apply it in real circuits.
             </p>
           </CardContent>
