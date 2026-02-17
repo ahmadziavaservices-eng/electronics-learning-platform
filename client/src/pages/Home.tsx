@@ -32,11 +32,11 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <Badge className="mb-4 bg-blue-500/20 text-blue-300 border-blue-500/50">Welcome to ElectroLearn</Badge>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-green-400 bg-clip-text text-transparent leading-tight">
             Master Electronics & IoT
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             From fundamental circuits to advanced IoT applications. Learn at your own pace with comprehensive, hands-on courses designed for beginners and professionals.
           </p>
           
@@ -54,16 +54,16 @@ export default function Home() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 md:gap-8 py-12 border-y border-slate-700">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-blue-400">3</div>
-              <p className="text-slate-400 mt-2">Comprehensive Courses</p>
+              <div className="text-3xl md:text-4xl font-bold text-blue-400 leading-tight">3</div>
+              <p className="text-slate-400 mt-2 leading-relaxed">Comprehensive Courses</p>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400">15+</div>
-              <p className="text-slate-400 mt-2">Learning Modules</p>
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 leading-tight">15+</div>
+              <p className="text-slate-400 mt-2 leading-relaxed">Learning Modules</p>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-green-400">100%</div>
-              <p className="text-slate-400 mt-2">Free & Open</p>
+              <div className="text-3xl md:text-4xl font-bold text-green-400 leading-tight">100%</div>
+              <p className="text-slate-400 mt-2 leading-relaxed">Free & Open</p>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section id="features" className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center mb-16">Why Choose ElectroLearn?</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 leading-tight">Why Choose ElectroLearn?</h2>
         
         <div className="grid md:grid-cols-3 gap-8">
           <Card className="bg-slate-800 border-slate-700 hover:border-blue-500 transition">
@@ -80,7 +80,7 @@ export default function Home() {
               <CardTitle className="text-white">Structured Learning</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-slate-300">Carefully designed curriculum that builds from fundamentals to advanced topics, ensuring you understand each concept before moving forward.</p>
+              <p className="text-slate-300 leading-relaxed">Carefully designed curriculum that builds from fundamentals to advanced topics, ensuring you understand each concept before moving forward.</p>
             </CardContent>
           </Card>
 
@@ -90,7 +90,7 @@ export default function Home() {
               <CardTitle className="text-white">Hands-On Projects</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-slate-300">Learn by doing. Each course includes practical projects and exercises using real hardware and components.</p>
+              <p className="text-slate-300 leading-relaxed">Learn by doing. Each course includes practical projects and exercises using real hardware and components.</p>
             </CardContent>
           </Card>
 
@@ -100,7 +100,7 @@ export default function Home() {
               <CardTitle className="text-white">IoT Ready</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-slate-300">Progress from basic electronics to connected IoT devices. Build real-world applications with WiFi and Bluetooth.</p>
+              <p className="text-slate-300 leading-relaxed">Progress from basic electronics to connected IoT devices. Build real-world applications with WiFi and Bluetooth.</p>
             </CardContent>
           </Card>
         </div>
@@ -109,8 +109,8 @@ export default function Home() {
       {/* Courses Section */}
       <section id="courses" className="container mx-auto px-4 py-20 bg-slate-800/50 -mx-4 px-4 my-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4">Featured Courses</h2>
-          <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-4 leading-tight">Featured Courses</h2>
+          <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto leading-relaxed">
             Choose your learning path and start mastering electronics today
           </p>
 
@@ -128,14 +128,14 @@ export default function Home() {
                         {course.duration}
                       </span>
                     </div>
-                    <CardTitle className="text-white text-xl">{course.title}</CardTitle>
-                    <CardDescription className="text-slate-300">{course.description}</CardDescription>
+                    <CardTitle className="text-white text-xl leading-tight">{course.title}</CardTitle>
+                    <CardDescription className="text-slate-300 leading-relaxed">{course.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <p className="text-sm text-slate-400 mb-2">Learning Outcomes:</p>
-                        <ul className="text-sm text-slate-300 space-y-1">
+                        <p className="text-sm text-slate-400 mb-2 leading-tight">Learning Outcomes:</p>
+                        <ul className="text-sm text-slate-300 space-y-2 leading-relaxed">
                           {course.learningOutcomes.slice(0, 3).map((outcome, idx) => (
                             <li key={idx} className="flex gap-2">
                               <span className="text-blue-400">✓</span>
@@ -166,7 +166,7 @@ export default function Home() {
 
       {/* Course Categories */}
       <section className="container mx-auto px-4 py-20">
-        <h2 className="text-4xl font-bold text-center mb-16">Learning Paths</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 leading-tight">Learning Paths</h2>
         
         <div className="grid md:grid-cols-3 gap-8">
           {courseCategories.map((category) => {
@@ -174,8 +174,8 @@ export default function Home() {
             return (
               <Link key={category.id} href={`/courses?category=${category.id}`}>
                 <div className={`bg-gradient-to-br ${categoryColor} p-8 rounded-lg cursor-pointer hover:shadow-lg transition transform hover:scale-105`}>
-                  <h3 className="text-2xl font-bold text-white mb-3">{category.name}</h3>
-                  <p className="text-white/90 mb-6">{category.description}</p>
+                  <h3 className="text-2xl font-bold text-white mb-3 leading-tight">{category.name}</h3>
+                  <p className="text-white/90 mb-6 leading-relaxed">{category.description}</p>
                   <div className="flex items-center gap-2 text-white font-semibold">
                     Explore <ArrowRight className="w-5 h-5" />
                   </div>
@@ -189,20 +189,20 @@ export default function Home() {
       {/* Tools & Requirements Section */}
       <section id="tools" className="container mx-auto px-4 py-20 bg-slate-800/50 -mx-4 px-4 my-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">What You'll Need</h2>
+          <h2 className="text-4xl font-bold text-center mb-16 leading-tight">What You'll Need</h2>
           
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 leading-tight">
                 <Zap className="w-6 h-6 text-yellow-400" />
                 Hardware
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-4 leading-relaxed">
                 <li className="flex gap-3">
                   <span className="text-blue-400 font-bold">•</span>
                   <div>
-                    <p className="font-semibold">Breadboard</p>
-                    <p className="text-sm text-slate-400">For prototyping circuits without soldering</p>
+                    <p className="font-semibold leading-tight">Breadboard</p>
+                    <p className="text-sm text-slate-400 leading-relaxed">For prototyping circuits without soldering</p>
                   </div>
                 </li>
                 <li className="flex gap-3">
