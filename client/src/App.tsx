@@ -8,6 +8,7 @@ import { AccessibilityProvider } from "./contexts/AccessibilityContext";
 import { AccessibilityPanel } from "./components/AccessibilityPanel";
 import NewHome from "./pages/NewHome";
 import Courses from "./pages/Courses";
+import Blog from "./pages/Blog";
 import CourseLanding from "./pages/CourseLanding";
 import CourseModules from "./pages/CourseModules";
 import ModuleDetail from "./pages/ModuleDetail";
@@ -30,6 +31,7 @@ function Router() {
         <Switch>
           <Route path="/" component={NewHome} />
           <Route path="/courses" component={Courses} />
+        <Route path="/blog" component={Blog} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/calculators" component={Calculators} />
           <Route path="/admin" component={AdminDashboard} />
