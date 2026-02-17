@@ -25,27 +25,27 @@ export default function Courses() {
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'beginner':
-        return 'bg-green-500/20 text-green-300 border-green-500/50';
+        return 'bg-lime-500/20 text-lime-300 border-lime-500/50';
       case 'intermediate':
-        return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/50';
+        return 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50';
       case 'advanced':
-        return 'bg-red-500/20 text-red-300 border-red-500/50';
+        return 'bg-purple-500/20 text-purple-300 border-purple-500/50';
       default:
         return 'bg-slate-500/20 text-slate-300 border-slate-500/50';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
       {/* Header */}
-      <div className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-40">
+      <div className="border-b border-slate-700/50 bg-gradient-to-b from-slate-900/80 to-slate-950/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-8">
           <Link href="/">
-            <a className="text-blue-400 hover:text-blue-300 transition mb-4 inline-flex items-center gap-2 leading-tight">
+            <a className="text-cyan-400 hover:text-cyan-300 transition mb-4 inline-flex items-center gap-2 leading-tight font-semibold">
               ← Back to Home
             </a>
           </Link>
-          <h1 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">All Courses</h1>
+          <h1 className="text-4xl md:text-5xl font-black mb-2 leading-tight bg-gradient-to-r from-cyan-400 to-lime-400 bg-clip-text text-transparent">All Courses</h1>
           <p className="text-slate-300 leading-relaxed">Choose from our comprehensive collection of electronics and IoT courses</p>
         </div>
       </div>
@@ -54,8 +54,8 @@ export default function Courses() {
         <div className="grid md:grid-cols-4 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Sidebar - Filters */}
           <div className="md:col-span-1 lg:col-span-1">
-            <div className="bg-slate-800 rounded-lg p-6 border border-slate-700 sticky top-24">
-              <h3 className="text-lg font-bold mb-4 leading-tight">Filters</h3>
+            <div className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 rounded-lg p-6 border border-slate-700/50 sticky top-24 hover:border-cyan-500/30 transition-all">
+              <h3 className="text-lg font-bold mb-4 leading-tight text-cyan-400">Filters</h3>
 
               {/* Category Filter */}
               <div className="mb-6">
@@ -65,8 +65,8 @@ export default function Courses() {
                     onClick={() => window.location.href = '/courses'}
                     className={`block w-full text-left px-3 py-2 rounded transition ${
                       !selectedCategory
-                        ? 'bg-blue-600 text-white'
-                        : 'text-slate-300 hover:bg-slate-700'
+                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
+                        : 'text-slate-300 hover:bg-slate-700/50'
                     }`}
                   >
                     All Categories
@@ -77,8 +77,8 @@ export default function Courses() {
                       onClick={() => window.location.href = `/courses?category=${category.id}`}
                       className={`block w-full text-left px-3 py-2 rounded transition ${
                         selectedCategory === category.id
-                          ? 'bg-blue-600 text-white'
-                          : 'text-slate-300 hover:bg-slate-700'
+                          ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
+                          : 'text-slate-300 hover:bg-slate-700/50'
                       }`}
                     >
                       {category.name}
@@ -95,8 +95,8 @@ export default function Courses() {
                     onClick={() => setSelectedDifficulty(null)}
                     className={`block w-full text-left px-3 py-2 rounded transition ${
                       !selectedDifficulty
-                        ? 'bg-blue-600 text-white'
-                        : 'text-slate-300 hover:bg-slate-700'
+                        ? 'bg-lime-500/20 text-lime-300 border border-lime-500/50'
+                        : 'text-slate-300 hover:bg-slate-700/50'
                     }`}
                   >
                     All Levels
@@ -107,8 +107,8 @@ export default function Courses() {
                       onClick={() => setSelectedDifficulty(selectedDifficulty === level ? null : level)}
                       className={`block w-full text-left px-3 py-2 rounded transition capitalize ${
                         selectedDifficulty === level
-                          ? 'bg-blue-600 text-white'
-                          : 'text-slate-300 hover:bg-slate-700'
+                          ? 'bg-lime-500/20 text-lime-300 border border-lime-500/50'
+                          : 'text-slate-300 hover:bg-slate-700/50'
                       }`}
                     >
                       {level}
@@ -129,61 +129,63 @@ export default function Courses() {
               <div className="grid gap-6">
                 {filteredCourses.map(course => (
                   <Link key={course.id} href={`/course/${course.slug}`}>
-                    <Card className="bg-slate-800 border-slate-700 hover:border-blue-500 transition cursor-pointer">
-                      <CardHeader>
-                        <div className="flex items-start justify-between mb-3">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
-                              <Badge className={getDifficultyColor(course.difficulty)}>
-                                {course.difficulty}
-                              </Badge>
-                              <Badge variant="outline" className="bg-slate-700 text-slate-300 border-slate-600">
-                                {course.category}
-                              </Badge>
+                    <a className="block group">
+                      <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 hover:border-cyan-500/50 transition-all cursor-pointer hover:shadow-lg hover:shadow-cyan-500/10 hover:-translate-y-1">
+                        <CardHeader>
+                          <div className="flex items-start justify-between mb-3">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-2">
+                                <Badge className={getDifficultyColor(course.difficulty)}>
+                                  {course.difficulty}
+                                </Badge>
+                                <Badge variant="outline" className="bg-slate-700/60 text-slate-300 border-slate-600/50">
+                                  {course.category}
+                                </Badge>
+                              </div>
+                              <CardTitle className="text-white text-2xl group-hover:text-cyan-400 transition-colors">{course.title}</CardTitle>
+                              <CardDescription className="text-slate-300 text-base">{course.description}</CardDescription>
                             </div>
-                            <CardTitle className="text-white text-2xl">{course.title}</CardTitle>
-                            <CardDescription className="text-slate-300 text-base">{course.description}</CardDescription>
-                          </div>
-                          <div className="flex items-center gap-1 text-slate-400 flex-shrink-0 ml-4">
-                            <Clock className="w-5 h-5" />
-                            <span className="text-sm">{course.duration}</span>
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="grid md:grid-cols-2 gap-6">
-                          <div>
-                            <p className="text-sm text-slate-400 mb-3 font-semibold">Learning Outcomes:</p>
-                            <ul className="space-y-2 leading-relaxed">
-                              {course.learningOutcomes.slice(0, 4).map((outcome, idx) => (
-                                <li key={idx} className="text-sm text-slate-300 flex gap-2">
-                                  <span className="text-blue-400 flex-shrink-0">✓</span>
-                                  {outcome}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <p className="text-sm text-slate-400 mb-3 font-semibold">What You'll Need:</p>
-                            <div className="flex flex-wrap gap-2 leading-relaxed">
-                              {course.tools.slice(0, 4).map((tool, idx) => (
-                                <Badge key={idx} variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-sm">
-                                  {tool.name}
-                                </Badge>
-                              ))}
-                              {course.tools.length > 4 && (
-                                <Badge variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-sm">
-                                  +{course.tools.length - 4} more
-                                </Badge>
-                              )}
+                            <div className="flex items-center gap-1 text-slate-400 flex-shrink-0 ml-4">
+                              <Clock className="w-5 h-5" />
+                              <span className="text-sm">{course.duration}</span>
                             </div>
                           </div>
-                        </div>
-                        <div className="mt-6 flex items-center gap-2 text-blue-400 font-semibold group">
-                          View Course <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
-                        </div>
-                      </CardContent>
-                    </Card>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <p className="text-sm text-slate-400 mb-3 font-semibold">Learning Outcomes:</p>
+                              <ul className="space-y-2 leading-relaxed">
+                                {course.learningOutcomes.slice(0, 4).map((outcome, idx) => (
+                                  <li key={idx} className="text-sm text-slate-300 flex gap-2">
+                                    <span className="text-lime-400 flex-shrink-0">✓</span>
+                                    {outcome}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <p className="text-sm text-slate-400 mb-3 font-semibold">What You'll Need:</p>
+                              <div className="flex flex-wrap gap-2 leading-relaxed">
+                                {course.tools.slice(0, 4).map((tool, idx) => (
+                                  <Badge key={idx} variant="outline" className="bg-slate-700/60 text-slate-300 border-slate-600/50 text-sm">
+                                    {tool.name}
+                                  </Badge>
+                                ))}
+                                {course.tools.length > 4 && (
+                                  <Badge variant="outline" className="bg-slate-700/60 text-slate-300 border-slate-600/50 text-sm">
+                                    +{course.tools.length - 4} more
+                                  </Badge>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="mt-6 flex items-center gap-2 text-cyan-400 font-semibold group">
+                            View Course <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </a>
                   </Link>
                 ))}
               </div>
