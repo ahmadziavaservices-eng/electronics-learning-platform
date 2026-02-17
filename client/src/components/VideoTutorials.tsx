@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Play, ExternalLink } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Play, ExternalLink, Search, Clock, User, Eye, ThumbsUp } from 'lucide-react';
 import { useState } from 'react';
 
 interface VideoTutorial {
@@ -11,6 +13,10 @@ interface VideoTutorial {
   duration: string;
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   topic: string;
+  instructor?: string;
+  views?: string;
+  likes?: string;
+  tags?: string[];
 }
 
 interface VideoTutorialsProps {
@@ -19,7 +25,22 @@ interface VideoTutorialsProps {
 }
 
 export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedVideo, setSelectedVideo] = useState<VideoTutorial | null>(videos[0] || null);
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(null);
+
+  const topics = Array.from(new Set(videos.map(v => v.topic)));
+  const difficulties = ['Beginner', 'Intermediate', 'Advanced'];
+
+  const filteredVideos = videos.filter(video => {
+    const matchesSearch = video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         video.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         (video.tags?.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) || false);
+    const matchesDifficulty = !selectedDifficulty || video.difficulty === selectedDifficulty;
+    const matchesTopic = !selectedTopic || video.topic === selectedTopic;
+    return matchesSearch && matchesDifficulty && matchesTopic;
+  });
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
@@ -40,8 +61,15 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
       {selectedVideo && (
         <Card className="bg-slate-900 border-cyan-500/30 overflow-hidden">
           <CardHeader>
-            <CardTitle className="text-cyan-400">{selectedVideo.title}</CardTitle>
-            <CardDescription>{selectedVideo.description}</CardDescription>
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex-1">
+                <CardTitle className="text-cyan-400">{selectedVideo.title}</CardTitle>
+                <CardDescription>{selectedVideo.description}</CardDescription>
+              </div>
+              <Badge className={`flex-shrink-0 ${getDifficultyColor(selectedVideo.difficulty)}`}>
+                {selectedVideo.difficulty}
+              </Badge>
+            </div>
           </CardHeader>
           <CardContent className="space-y-4">
             {/* YouTube Embed */}
@@ -55,26 +83,45 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
               />
             </div>
 
-            {/* Video Info */}
-            <div className="grid grid-cols-3 gap-4">
+            {/* Video Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <div className="bg-slate-800 p-3 rounded">
-                <p className="text-xs text-slate-400">Duration</p>
-                <p className="text-sm font-semibold text-cyan-400">{selectedVideo.duration}</p>
+                <p className="text-xs text-slate-400 flex items-center gap-1"><Clock className="w-3 h-3" /> Duration</p>
+                <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.duration}</p>
               </div>
-              <div className={`p-3 rounded border ${getDifficultyColor(selectedVideo.difficulty)}`}>
-                <p className="text-xs text-slate-400">Difficulty</p>
-                <p className="text-sm font-semibold">{selectedVideo.difficulty}</p>
-              </div>
-              <div className="bg-slate-800 p-3 rounded">
-                <p className="text-xs text-slate-400">Topic</p>
-                <p className="text-sm font-semibold text-cyan-400">{selectedVideo.topic}</p>
-              </div>
+              {selectedVideo.instructor && (
+                <div className="bg-slate-800 p-3 rounded">
+                  <p className="text-xs text-slate-400 flex items-center gap-1"><User className="w-3 h-3" /> Instructor</p>
+                  <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.instructor}</p>
+                </div>
+              )}
+              {selectedVideo.views && (
+                <div className="bg-slate-800 p-3 rounded">
+                  <p className="text-xs text-slate-400 flex items-center gap-1"><Eye className="w-3 h-3" /> Views</p>
+                  <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.views}</p>
+                </div>
+              )}
+              {selectedVideo.likes && (
+                <div className="bg-slate-800 p-3 rounded">
+                  <p className="text-xs text-slate-400 flex items-center gap-1"><ThumbsUp className="w-3 h-3" /> Likes</p>
+                  <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.likes}</p>
+                </div>
+              )}
             </div>
 
-            {/* Video Description */}
-            <div className="bg-slate-800 p-4 rounded border border-slate-700">
-              <p className="text-sm text-slate-300 leading-relaxed">{selectedVideo.description}</p>
-            </div>
+            {/* Tags */}
+            {selectedVideo.tags && selectedVideo.tags.length > 0 && (
+              <div>
+                <p className="text-xs text-slate-400 mb-2">Topics Covered:</p>
+                <div className="flex flex-wrap gap-2">
+                  {selectedVideo.tags.map((tag, idx) => (
+                    <Badge key={idx} className="bg-blue-900/30 border-blue-500/50 text-blue-400">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Action Buttons */}
             <div className="flex gap-2 flex-wrap">
@@ -92,16 +139,90 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
         </Card>
       )}
 
-      {/* Video Playlist */}
+      {/* Search & Filters */}
       {videos.length > 1 && (
         <Card className="bg-slate-900 border-slate-700">
           <CardHeader>
+            <CardTitle className="text-slate-300">🔍 Search & Filter</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {/* Search */}
+            <div className="relative">
+              <Search className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+              <Input
+                type="text"
+                placeholder="Search videos..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10 bg-slate-800 border-slate-700 text-white placeholder-slate-400"
+              />
+            </div>
+
+            {/* Difficulty Filter */}
+            <div>
+              <p className="text-xs text-slate-400 mb-2 uppercase">Difficulty</p>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  variant={selectedDifficulty === null ? 'default' : 'outline'}
+                  onClick={() => setSelectedDifficulty(null)}
+                  className={selectedDifficulty === null ? 'bg-blue-600 hover:bg-blue-700' : 'border-slate-600 text-slate-300 hover:bg-slate-800'}
+                >
+                  All
+                </Button>
+                {difficulties.map(diff => (
+                  <Button
+                    key={diff}
+                    size="sm"
+                    variant={selectedDifficulty === diff ? 'default' : 'outline'}
+                    onClick={() => setSelectedDifficulty(diff)}
+                    className={selectedDifficulty === diff ? 'bg-blue-600 hover:bg-blue-700' : 'border-slate-600 text-slate-300 hover:bg-slate-800'}
+                  >
+                    {diff}
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            {/* Topic Filter */}
+            <div>
+              <p className="text-xs text-slate-400 mb-2 uppercase">Topic</p>
+              <div className="flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  variant={selectedTopic === null ? 'default' : 'outline'}
+                  onClick={() => setSelectedTopic(null)}
+                  className={selectedTopic === null ? 'bg-blue-600 hover:bg-blue-700' : 'border-slate-600 text-slate-300 hover:bg-slate-800'}
+                >
+                  All
+                </Button>
+                {topics.map(topic => (
+                  <Button
+                    key={topic}
+                    size="sm"
+                    variant={selectedTopic === topic ? 'default' : 'outline'}
+                    onClick={() => setSelectedTopic(topic)}
+                    className={selectedTopic === topic ? 'bg-blue-600 hover:bg-blue-700' : 'border-slate-600 text-slate-300 hover:bg-slate-800'}
+                  >
+                    {topic}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Video Playlist */}
+      {filteredVideos.length > 0 && (
+        <Card className="bg-slate-900 border-slate-700">
+          <CardHeader>
             <CardTitle className="text-slate-300">📺 Video Playlist</CardTitle>
-            <CardDescription>{videos.length} videos in this module</CardDescription>
+            <CardDescription>{filteredVideos.length} video{filteredVideos.length !== 1 ? 's' : ''} found</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
-              {videos.map((video, index) => (
+              {filteredVideos.map((video, index) => (
                 <button
                   key={video.id}
                   onClick={() => setSelectedVideo(video)}
@@ -116,7 +237,7 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
                       <Play className="w-4 h-4 text-cyan-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-slate-200 text-sm">{index + 1}. {video.title}</p>
+                      <p className="font-semibold text-slate-200 text-sm">{video.title}</p>
                       <p className="text-xs text-slate-400 mt-1">{video.duration}</p>
                     </div>
                     <span className={`text-xs font-semibold px-2 py-1 rounded flex-shrink-0 ${getDifficultyColor(video.difficulty)}`}>
@@ -126,6 +247,14 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
                 </button>
               ))}
             </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {filteredVideos.length === 0 && (
+        <Card className="bg-slate-900 border-slate-700">
+          <CardContent className="py-8 text-center">
+            <p className="text-slate-400">No videos found matching your filters.</p>
           </CardContent>
         </Card>
       )}
