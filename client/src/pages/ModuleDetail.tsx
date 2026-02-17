@@ -190,7 +190,7 @@ export default function ModuleDetail() {
                             {ref.title}
                             <ExternalLink className="w-4 h-4" />
                           </p>
-                          <Badge variant="outline" className="bg-slate-800 text-slate-400 border-slate-600 text-xs mt-1">
+                          <Badge variant="outline" className="bg-slate-800 text-slate-400 border-slate-600 text-sm mt-1">
                             {ref.type}
                           </Badge>
                         </div>
@@ -275,7 +275,7 @@ export default function ModuleDetail() {
                         }`}
                       >
                         <p className="text-sm font-semibold">Module {idx + 1}</p>
-                        <p className="text-xs opacity-75 line-clamp-2">{m.title}</p>
+                        <p className="text-sm opacity-75 line-clamp-2">{m.title}</p>
                       </a>
                     </Link>
                   ))}

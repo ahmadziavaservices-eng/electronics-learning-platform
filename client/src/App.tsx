@@ -16,19 +16,30 @@ import Calculators from "./pages/Calculators";
 
 function Router() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/courses"} component={Courses} />
-      <Route path={"/marketplace"} component={Marketplace} />
-      <Route path={"/calculators"} component={Calculators} />
-      <Route path={"/admin"} component={AdminDashboard} />
-      <Route path={"/course/:slug"} component={CourseLanding} />
-      <Route path={"/course/:slug/modules"} component={CourseModules} />
-      <Route path={"/course/:slug/module/:moduleId"} component={ModuleDetail} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <>
+      {/* Skip to main content link for keyboard navigation */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-blue-600 focus:text-white"
+      >
+        Skip to main content
+      </a>
+      <main id="main-content" role="main">
+        <Switch>
+          <Route path="/" component={Home} />
+          <Route path="/courses" component={Courses} />
+          <Route path="/marketplace" component={Marketplace} />
+          <Route path="/calculators" component={Calculators} />
+          <Route path="/admin" component={AdminDashboard} />
+          <Route path="/course/:slug" component={CourseLanding} />
+          <Route path="/course/:slug/modules" component={CourseModules} />
+          <Route path="/course/:slug/module/:moduleId" component={ModuleDetail} />
+          <Route path="/404" component={NotFound} />
+          {/* Final fallback route */}
+          <Route component={NotFound} />
+        </Switch>
+      </main>
+    </>
   );
 }
 
@@ -45,7 +56,9 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <div role="application" aria-label="Electronics Learning Platform">
+            <Router />
+          </div>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

@@ -187,7 +187,7 @@ export default function ComponentComparison() {
                     <CardContent className="space-y-3">
                       {comp.specifications.map((spec, idx) => (
                         <div key={idx} className="bg-slate-700/30 rounded p-3">
-                          <div className="text-xs text-slate-400 uppercase tracking-wide">{spec.key}</div>
+                          <div className="text-sm text-slate-400 uppercase tracking-wide">{spec.key}</div>
                           <div className="text-sm font-semibold text-slate-200 mt-1">{spec.value}</div>
                         </div>
                       ))}

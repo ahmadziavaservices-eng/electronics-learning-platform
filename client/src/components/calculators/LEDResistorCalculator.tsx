@@ -102,7 +102,7 @@ export function LEDResistorCalculator() {
                   <button
                     key={ps.name}
                     onClick={() => setSupplyVoltage(ps.voltage)}
-                    className="text-xs bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-300"
+                    className="text-sm bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded text-slate-300"
                   >
                     {ps.name}
                   </button>
@@ -119,13 +119,13 @@ export function LEDResistorCalculator() {
                 onChange={(e) => setLedVoltage(e.target.value === '' ? '' : Number(e.target.value))}
                 className="bg-slate-800 border-slate-600 text-white"
               />
-              <div className="text-xs text-slate-400 mt-2">
+              <div className="text-sm text-slate-400 mt-2">
                 <p className="font-semibold mb-1">LED Types:</p>
                 {ledTypes.slice(0, 3).map(led => (
                   <button
                     key={led.color}
                     onClick={() => setLedVoltage(Number(led.voltage.split('-')[0]))}
-                    className="block text-left w-full hover:text-slate-300 text-xs"
+                    className="block text-left w-full hover:text-slate-300 text-sm"
                   >
                     {led.color}: {led.voltage}
                   </button>
@@ -142,17 +142,17 @@ export function LEDResistorCalculator() {
                 onChange={(e) => setLedCurrent(e.target.value === '' ? '' : Number(e.target.value))}
                 className="bg-slate-800 border-slate-600 text-white"
               />
-              <div className="text-xs text-slate-400 mt-2">
+              <div className="text-sm text-slate-400 mt-2">
                 <p className="font-semibold mb-1">Quick Select:</p>
                 <button
                   onClick={() => setLedCurrent(0.01)}
-                  className="block hover:text-slate-300 text-xs"
+                  className="block hover:text-slate-300 text-sm"
                 >
                   10mA (0.01A)
                 </button>
                 <button
                   onClick={() => setLedCurrent(0.02)}
-                  className="block hover:text-slate-300 text-xs"
+                  className="block hover:text-slate-300 text-sm"
                 >
                   20mA (0.02A)
                 </button>
@@ -188,7 +188,7 @@ export function LEDResistorCalculator() {
                 Use a {result.wattage} resistor (minimum)
               </p>
               <div className="bg-green-900/30 p-2 rounded mt-2">
-                <p className="text-green-200 text-xs">
+                <p className="text-green-200 text-sm">
                   💡 Nearest standard resistor: {getNearestStandardResistor(result.resistance)}Ω
                 </p>
               </div>

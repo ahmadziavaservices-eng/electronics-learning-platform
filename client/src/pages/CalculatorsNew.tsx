@@ -161,7 +161,7 @@ export default function Calculators() {
                           <div className="text-cyan-400 group-hover:scale-110 transition">
                             {calc.icon}
                           </div>
-                          <span className="text-xs font-semibold px-2 py-1 rounded bg-slate-700 text-slate-300">
+                          <span className="text-sm font-semibold px-2 py-1 rounded bg-slate-700 text-slate-300">
                             {calc.category}
                           </span>
                         </div>

@@ -43,7 +43,7 @@ export function ReportPreviewModal({
       <div className="bg-slate-800 p-4 rounded border border-slate-700">
         <p className="text-sm font-semibold text-slate-300 mb-2">📊 Calculator</p>
         <p className="text-lg font-bold text-cyan-400">{report.calculatorName}</p>
-        <p className="text-xs text-slate-400 mt-1">{report.timestamp}</p>
+        <p className="text-sm text-slate-400 mt-1">{report.timestamp}</p>
       </div>
 
       {/* Real-World Scenario */}
@@ -141,14 +141,14 @@ export function ReportPreviewModal({
         <div className="space-y-3">
           <div className="bg-cyan-900/20 border border-cyan-500/50 p-3 rounded">
             <p className="text-sm font-semibold text-cyan-300">📊 Calculation 1</p>
-            <p className="text-xs text-slate-400 mt-1">{report.calculation1.calculatorName}</p>
+            <p className="text-sm text-slate-400 mt-1">{report.calculation1.calculatorName}</p>
           </div>
 
           <div className="bg-slate-800 p-3 rounded border border-slate-700">
-            <p className="text-xs font-semibold text-slate-300 mb-2">Inputs</p>
+            <p className="text-sm font-semibold text-slate-300 mb-2">Inputs</p>
             <div className="space-y-1">
               {Object.entries(report.calculation1.inputs).map(([key, input]) => (
-                <div key={key} className="text-xs">
+                <div key={key} className="text-sm">
                   <span className="text-slate-400">{key}:</span>
                   <span className="text-cyan-400 ml-1">{input.value} {input.unit}</span>
                 </div>
@@ -157,10 +157,10 @@ export function ReportPreviewModal({
           </div>
 
           <div className="bg-green-900/20 border border-green-500/50 p-3 rounded">
-            <p className="text-xs font-semibold text-green-300 mb-2">Results</p>
+            <p className="text-sm font-semibold text-green-300 mb-2">Results</p>
             <div className="space-y-1">
               {Object.entries(report.calculation1.outputs).map(([key, output]) => (
-                <div key={key} className="text-xs">
+                <div key={key} className="text-sm">
                   <span className="text-slate-300">{key}:</span>
                   <span className="text-green-400 font-bold ml-1">{output.value} {output.unit}</span>
                 </div>
@@ -173,14 +173,14 @@ export function ReportPreviewModal({
         <div className="space-y-3">
           <div className="bg-purple-900/20 border border-purple-500/50 p-3 rounded">
             <p className="text-sm font-semibold text-purple-300">📊 Calculation 2</p>
-            <p className="text-xs text-slate-400 mt-1">{report.calculation2.calculatorName}</p>
+            <p className="text-sm text-slate-400 mt-1">{report.calculation2.calculatorName}</p>
           </div>
 
           <div className="bg-slate-800 p-3 rounded border border-slate-700">
-            <p className="text-xs font-semibold text-slate-300 mb-2">Inputs</p>
+            <p className="text-sm font-semibold text-slate-300 mb-2">Inputs</p>
             <div className="space-y-1">
               {Object.entries(report.calculation2.inputs).map(([key, input]) => (
-                <div key={key} className="text-xs">
+                <div key={key} className="text-sm">
                   <span className="text-slate-400">{key}:</span>
                   <span className="text-purple-400 ml-1">{input.value} {input.unit}</span>
                 </div>
@@ -189,10 +189,10 @@ export function ReportPreviewModal({
           </div>
 
           <div className="bg-green-900/20 border border-green-500/50 p-3 rounded">
-            <p className="text-xs font-semibold text-green-300 mb-2">Results</p>
+            <p className="text-sm font-semibold text-green-300 mb-2">Results</p>
             <div className="space-y-1">
               {Object.entries(report.calculation2.outputs).map(([key, output]) => (
-                <div key={key} className="text-xs">
+                <div key={key} className="text-sm">
                   <span className="text-slate-300">{key}:</span>
                   <span className="text-green-400 font-bold ml-1">{output.value} {output.unit}</span>
                 </div>

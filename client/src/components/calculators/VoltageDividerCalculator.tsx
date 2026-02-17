@@ -186,7 +186,7 @@ export function VoltageDividerCalculator() {
               <p className="text-purple-200 text-sm font-mono">R2 = R1 × (Vout / (Vin - Vout))</p>
             </div>
             <div className="bg-slate-800 p-2 rounded">
-              <p className="text-slate-300 text-xs">
+              <p className="text-slate-300 text-sm">
                 Where: Vin = Input voltage, Vout = Output voltage, R1 = Top resistor, R2 = Bottom resistor
               </p>
             </div>

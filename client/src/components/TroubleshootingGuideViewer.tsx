@@ -348,7 +348,7 @@ export default function TroubleshootingGuideViewer() {
                         className="block p-3 bg-slate-700/30 rounded hover:bg-slate-700/50 transition-colors"
                       >
                         <div className="text-blue-400 hover:text-blue-300 font-semibold">{ref.title}</div>
-                        <div className="text-xs text-slate-400 mt-1 truncate">{ref.url}</div>
+                        <div className="text-sm text-slate-400 mt-1 truncate">{ref.url}</div>
                       </a>
                     ))}
                   </div>

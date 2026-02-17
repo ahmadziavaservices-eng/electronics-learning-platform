@@ -123,19 +123,19 @@ export default function DIYProjectViewer() {
                 {/* Project Stats */}
                 <div className="grid md:grid-cols-4 gap-4">
                   <div className="bg-slate-700/30 rounded p-3">
-                    <div className="text-xs text-slate-400 uppercase">Difficulty</div>
+                    <div className="text-sm text-slate-400 uppercase">Difficulty</div>
                     <div className="text-lg font-bold text-slate-200 mt-1 capitalize">{project.difficulty}</div>
                   </div>
                   <div className="bg-slate-700/30 rounded p-3">
-                    <div className="text-xs text-slate-400 uppercase">Duration</div>
+                    <div className="text-sm text-slate-400 uppercase">Duration</div>
                     <div className="text-lg font-bold text-slate-200 mt-1">{project.duration}</div>
                   </div>
                   <div className="bg-slate-700/30 rounded p-3">
-                    <div className="text-xs text-slate-400 uppercase">Steps</div>
+                    <div className="text-sm text-slate-400 uppercase">Steps</div>
                     <div className="text-lg font-bold text-slate-200 mt-1">{project.steps.length}</div>
                   </div>
                   <div className="bg-slate-700/30 rounded p-3">
-                    <div className="text-xs text-slate-400 uppercase">Materials</div>
+                    <div className="text-sm text-slate-400 uppercase">Materials</div>
                     <div className="text-lg font-bold text-slate-200 mt-1">{project.materials.length}</div>
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export default function DIYProjectViewer() {
                           </div>
                           <div className="text-right">
                             <div className="font-bold text-slate-200">{material.estimatedCost}</div>
-                            <div className="text-xs text-slate-400 mt-1">Estimated</div>
+                            <div className="text-sm text-slate-400 mt-1">Estimated</div>
                           </div>
                         </div>
                       ))}
@@ -192,7 +192,7 @@ export default function DIYProjectViewer() {
                       <div className="text-2xl font-bold text-blue-400 mt-1">
                         Varies by supplier
                       </div>
-                      <div className="text-xs text-slate-400 mt-2">
+                      <div className="text-sm text-slate-400 mt-2">
                         Check Digilog.pk for current pricing
                       </div>
                     </div>
@@ -396,7 +396,7 @@ export default function DIYProjectViewer() {
                         className="block p-3 bg-slate-700/30 rounded hover:bg-slate-700/50 transition-colors"
                       >
                         <div className="text-blue-400 hover:text-blue-300 font-semibold">{ref.title}</div>
-                        <div className="text-xs text-slate-400 mt-1 truncate">{ref.url}</div>
+                        <div className="text-sm text-slate-400 mt-1 truncate">{ref.url}</div>
                       </a>
                     ))}
                   </div>

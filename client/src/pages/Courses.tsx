@@ -167,12 +167,12 @@ export default function Courses() {
                             <p className="text-sm text-slate-400 mb-3 font-semibold">What You'll Need:</p>
                             <div className="flex flex-wrap gap-2 leading-relaxed">
                               {course.tools.slice(0, 4).map((tool, idx) => (
-                                <Badge key={idx} variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-xs">
+                                <Badge key={idx} variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-sm">
                                   {tool.name}
                                 </Badge>
                               ))}
                               {course.tools.length > 4 && (
-                                <Badge variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-xs">
+                                <Badge variant="outline" className="bg-slate-700 text-slate-300 border-slate-600 text-sm">
                                   +{course.tools.length - 4} more
                                 </Badge>
                               )}

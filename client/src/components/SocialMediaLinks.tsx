@@ -114,7 +114,7 @@ const SocialMediaLinks: React.FC = () => {
                   {link.icon}
                 </div>
                 <h3 className="text-white font-bold text-center mb-1">{link.name}</h3>
-                <p className="text-white/80 text-xs text-center">{link.description}</p>
+                <p className="text-white/80 text-sm text-center">{link.description}</p>
               </div>
 
               {/* Border glow */}

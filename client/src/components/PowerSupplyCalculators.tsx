@@ -72,14 +72,14 @@ export default function PowerSupplyCalculators() {
         {/* Main Calculator Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-6 bg-slate-800/50 p-2 rounded-lg">
-            <TabsTrigger value="lm723-current" className="text-xs md:text-sm">LM723 Current</TabsTrigger>
-            <TabsTrigger value="feedback-divider" className="text-xs md:text-sm">Feedback Divider</TabsTrigger>
-            <TabsTrigger value="transformer" className="text-xs md:text-sm">Transformer Ratio</TabsTrigger>
-            <TabsTrigger value="filter-cap" className="text-xs md:text-sm">Filter Capacitor</TabsTrigger>
-            <TabsTrigger value="ripple" className="text-xs md:text-sm">Ripple Voltage</TabsTrigger>
-            <TabsTrigger value="power-dissipation" className="text-xs md:text-sm">Power Dissipation</TabsTrigger>
-            <TabsTrigger value="inductance" className="text-xs md:text-sm">Inductance</TabsTrigger>
-            <TabsTrigger value="esr" className="text-xs md:text-sm">ESR Testing</TabsTrigger>
+            <TabsTrigger value="lm723-current" className="text-sm md:text-sm">LM723 Current</TabsTrigger>
+            <TabsTrigger value="feedback-divider" className="text-sm md:text-sm">Feedback Divider</TabsTrigger>
+            <TabsTrigger value="transformer" className="text-sm md:text-sm">Transformer Ratio</TabsTrigger>
+            <TabsTrigger value="filter-cap" className="text-sm md:text-sm">Filter Capacitor</TabsTrigger>
+            <TabsTrigger value="ripple" className="text-sm md:text-sm">Ripple Voltage</TabsTrigger>
+            <TabsTrigger value="power-dissipation" className="text-sm md:text-sm">Power Dissipation</TabsTrigger>
+            <TabsTrigger value="inductance" className="text-sm md:text-sm">Inductance</TabsTrigger>
+            <TabsTrigger value="esr" className="text-sm md:text-sm">ESR Testing</TabsTrigger>
           </TabsList>
 
           {/* LM723 Current Limit Calculator */}
@@ -199,7 +199,7 @@ export default function PowerSupplyCalculators() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-xs text-slate-400 mt-2">
+                  <div className="text-sm text-slate-400 mt-2">
                     Formula: V_out = 1.25V × (1 + R2/R1)
                   </div>
                 </div>
@@ -371,7 +371,7 @@ export default function PowerSupplyCalculators() {
                   <div className="text-sm text-slate-300 mt-2">
                     Formula: C = I / (2 × f × V_ripple)
                   </div>
-                  <div className="text-xs text-slate-400 mt-3">
+                  <div className="text-sm text-slate-400 mt-3">
                     <strong>Recommendation:</strong> Use 2-3× calculated value for better filtering
                   </div>
                 </div>
@@ -568,7 +568,7 @@ export default function PowerSupplyCalculators() {
                   <div className="text-sm text-slate-300 mt-2">
                     Formula: P = (V_in - V_out) × I_out
                   </div>
-                  <div className="text-xs text-slate-400 mt-3">
+                  <div className="text-sm text-slate-400 mt-3">
                     <strong>Heat Sink Recommendation:</strong> For every 1W, use ~10°C/W heat sink
                   </div>
                 </div>

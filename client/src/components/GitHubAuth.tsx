@@ -93,7 +93,7 @@ export function GitHubAuth({ onAuthSuccess, requiredUsername }: GitHubAuthProps)
               />
               <div>
                 <p className="text-sm font-semibold text-white">{user.name || user.login}</p>
-                <p className="text-xs text-slate-400">@{user.login}</p>
+                <p className="text-sm text-slate-400">@{user.login}</p>
               </div>
             </div>
             <Button
@@ -136,7 +136,7 @@ export function GitHubAuth({ onAuthSuccess, requiredUsername }: GitHubAuthProps)
           </Button>
 
           <div className="pt-4 border-t border-slate-700">
-            <p className="text-xs text-slate-400 text-center">
+            <p className="text-sm text-slate-400 text-center">
               This page is protected. Only authorized GitHub users can access the admin panel.
             </p>
           </div>

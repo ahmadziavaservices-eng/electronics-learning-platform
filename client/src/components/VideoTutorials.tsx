@@ -86,24 +86,24 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
             {/* Video Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <div className="bg-slate-800 p-3 rounded">
-                <p className="text-xs text-slate-400 flex items-center gap-1"><Clock className="w-3 h-3" /> Duration</p>
+                <p className="text-sm text-slate-400 flex items-center gap-1"><Clock className="w-3 h-3" /> Duration</p>
                 <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.duration}</p>
               </div>
               {selectedVideo.instructor && (
                 <div className="bg-slate-800 p-3 rounded">
-                  <p className="text-xs text-slate-400 flex items-center gap-1"><User className="w-3 h-3" /> Instructor</p>
+                  <p className="text-sm text-slate-400 flex items-center gap-1"><User className="w-3 h-3" /> Instructor</p>
                   <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.instructor}</p>
                 </div>
               )}
               {selectedVideo.views && (
                 <div className="bg-slate-800 p-3 rounded">
-                  <p className="text-xs text-slate-400 flex items-center gap-1"><Eye className="w-3 h-3" /> Views</p>
+                  <p className="text-sm text-slate-400 flex items-center gap-1"><Eye className="w-3 h-3" /> Views</p>
                   <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.views}</p>
                 </div>
               )}
               {selectedVideo.likes && (
                 <div className="bg-slate-800 p-3 rounded">
-                  <p className="text-xs text-slate-400 flex items-center gap-1"><ThumbsUp className="w-3 h-3" /> Likes</p>
+                  <p className="text-sm text-slate-400 flex items-center gap-1"><ThumbsUp className="w-3 h-3" /> Likes</p>
                   <p className="text-sm font-semibold text-cyan-400 mt-1">{selectedVideo.likes}</p>
                 </div>
               )}
@@ -112,7 +112,7 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
             {/* Tags */}
             {selectedVideo.tags && selectedVideo.tags.length > 0 && (
               <div>
-                <p className="text-xs text-slate-400 mb-2">Topics Covered:</p>
+                <p className="text-sm text-slate-400 mb-2">Topics Covered:</p>
                 <div className="flex flex-wrap gap-2">
                   {selectedVideo.tags.map((tag, idx) => (
                     <Badge key={idx} className="bg-blue-900/30 border-blue-500/50 text-blue-400">
@@ -160,7 +160,7 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
 
             {/* Difficulty Filter */}
             <div>
-              <p className="text-xs text-slate-400 mb-2 uppercase">Difficulty</p>
+              <p className="text-sm text-slate-400 mb-2 uppercase">Difficulty</p>
               <div className="flex flex-wrap gap-2">
                 <Button
                   size="sm"
@@ -186,7 +186,7 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
 
             {/* Topic Filter */}
             <div>
-              <p className="text-xs text-slate-400 mb-2 uppercase">Topic</p>
+              <p className="text-sm text-slate-400 mb-2 uppercase">Topic</p>
               <div className="flex flex-wrap gap-2">
                 <Button
                   size="sm"
@@ -238,9 +238,9 @@ export function VideoTutorials({ moduleTitle, videos }: VideoTutorialsProps) {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-slate-200 text-sm">{video.title}</p>
-                      <p className="text-xs text-slate-400 mt-1">{video.duration}</p>
+                      <p className="text-sm text-slate-400 mt-1">{video.duration}</p>
                     </div>
-                    <span className={`text-xs font-semibold px-2 py-1 rounded flex-shrink-0 ${getDifficultyColor(video.difficulty)}`}>
+                    <span className={`text-sm font-semibold px-2 py-1 rounded flex-shrink-0 ${getDifficultyColor(video.difficulty)}`}>
                       {video.difficulty}
                     </span>
                   </div>

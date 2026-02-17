@@ -150,12 +150,12 @@ export default function Calculators() {
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-2 mb-2">
                     <Icon className="w-5 h-5 text-cyan-400" />
-                    <span className="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">
+                    <span className="text-sm bg-slate-700 px-2 py-1 rounded text-slate-300">
                       {calc.category}
                     </span>
                   </div>
                   <CardTitle className="text-base">{calc.name}</CardTitle>
-                  <CardDescription className="text-xs">{calc.description}</CardDescription>
+                  <CardDescription className="text-sm">{calc.description}</CardDescription>
                 </CardHeader>
               </Card>
             );

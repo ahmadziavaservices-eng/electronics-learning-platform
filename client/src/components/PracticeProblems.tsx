@@ -131,10 +131,10 @@ export function PracticeProblems({ problems }: PracticeProblemsProps) {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1">
                     <p className="font-semibold text-slate-200">{p.title}</p>
-                    <p className="text-xs text-slate-400 mt-1">{p.completionTime}</p>
+                    <p className="text-sm text-slate-400 mt-1">{p.completionTime}</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className={`text-xs font-semibold px-2 py-1 rounded ${getDifficultyColor(p.difficulty)}`}>
+                    <span className={`text-sm font-semibold px-2 py-1 rounded ${getDifficultyColor(p.difficulty)}`}>
                       {p.difficulty}
                     </span>
                     {problemsCompleted.includes(p.id) && (

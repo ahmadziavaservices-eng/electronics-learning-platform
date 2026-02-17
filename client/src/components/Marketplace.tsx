@@ -164,7 +164,7 @@ export default function Marketplace({ products, onAddToCart }: MarketplaceProps)
                         />
                       ))}
                     </div>
-                    <span className="text-xs text-slate-400">({product.reviews})</span>
+                    <span className="text-sm text-slate-400">({product.reviews})</span>
                   </div>
                 </CardHeader>
 
@@ -173,7 +173,7 @@ export default function Marketplace({ products, onAddToCart }: MarketplaceProps)
 
                   <div className="flex flex-wrap gap-2">
                     {product.tags.map(tag => (
-                      <Badge key={tag} className="bg-slate-700 text-cyan-300 text-xs">
+                      <Badge key={tag} className="bg-slate-700 text-cyan-300 text-sm">
                         {tag}
                       </Badge>
                     ))}
@@ -184,7 +184,7 @@ export default function Marketplace({ products, onAddToCart }: MarketplaceProps)
                       <p className="text-2xl font-bold text-green-400">
                         ${product.price.toFixed(2)}
                       </p>
-                      <p className="text-xs text-slate-400">{product.currency}</p>
+                      <p className="text-sm text-slate-400">{product.currency}</p>
                     </div>
 
                     {product.inStock ? (
@@ -206,7 +206,7 @@ export default function Marketplace({ products, onAddToCart }: MarketplaceProps)
                     href={product.vendorUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full text-center text-xs text-cyan-400 hover:text-cyan-300 py-2 border border-cyan-500/30 rounded hover:bg-cyan-500/10 transition"
+                    className="block w-full text-center text-sm text-cyan-400 hover:text-cyan-300 py-2 border border-cyan-500/30 rounded hover:bg-cyan-500/10 transition"
                   >
                     View on {product.vendor}
                   </a>

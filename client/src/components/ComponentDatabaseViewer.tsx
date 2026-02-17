@@ -115,7 +115,7 @@ export default function ComponentDatabaseViewer() {
                       <div className="grid md:grid-cols-2 gap-3">
                         {component.specifications.map((spec, idx) => (
                           <div key={idx} className="bg-slate-700/30 rounded p-3">
-                            <div className="text-xs text-slate-400 uppercase tracking-wide">{spec.key}</div>
+                            <div className="text-sm text-slate-400 uppercase tracking-wide">{spec.key}</div>
                             <div className="text-sm font-semibold text-slate-200 mt-1">{spec.value}</div>
                           </div>
                         ))}
@@ -226,12 +226,12 @@ export default function ComponentDatabaseViewer() {
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex gap-2">
                         {component.applications.slice(0, 2).map((app, idx) => (
-                          <Badge key={idx} className="bg-slate-700 text-slate-300 border-slate-600 text-xs">
+                          <Badge key={idx} className="bg-slate-700 text-slate-300 border-slate-600 text-sm">
                             {app}
                           </Badge>
                         ))}
                         {component.applications.length > 2 && (
-                          <Badge className="bg-slate-700 text-slate-300 border-slate-600 text-xs">
+                          <Badge className="bg-slate-700 text-slate-300 border-slate-600 text-sm">
                             +{component.applications.length - 2} more
                           </Badge>
                         )}
