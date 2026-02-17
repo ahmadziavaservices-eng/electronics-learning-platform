@@ -195,12 +195,12 @@ export default function Marketplace() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
       {/* Header */}
-      <div className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-40">
+      <div className="border-b border-slate-700/50 bg-gradient-to-b from-slate-900/80 to-slate-950/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
           <Link href="/courses">
-            <a className="text-cyan-400 hover:text-cyan-300 transition inline-flex items-center gap-2 mb-4">
+            <a className="text-cyan-400 hover:text-cyan-300 transition inline-flex items-center gap-2 mb-4 font-semibold">
               <ArrowLeft className="w-4 h-4" />
               Back to Courses
             </a>
