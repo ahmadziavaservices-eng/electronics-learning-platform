@@ -6,7 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AccessibilityProvider } from "./contexts/AccessibilityContext";
 import { AccessibilityPanel } from "./components/AccessibilityPanel";
-import Home from "./pages/Home";
+import NewHome from "./pages/NewHome";
 import Courses from "./pages/Courses";
 import CourseLanding from "./pages/CourseLanding";
 import CourseModules from "./pages/CourseModules";
@@ -28,7 +28,7 @@ function Router() {
       </a>
       <main id="main-content" role="main">
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/" component={NewHome} />
           <Route path="/courses" component={Courses} />
           <Route path="/marketplace" component={Marketplace} />
           <Route path="/calculators" component={Calculators} />
