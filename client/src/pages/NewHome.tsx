@@ -4,15 +4,32 @@ import { ArrowRight } from 'lucide-react';
 import AnimatedScientist from '@/components/AnimatedScientist';
 import DidYouKnowPopup from '@/components/DidYouKnowPopup';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
+import { RoboticHead } from '@/components/RoboticHead';
 import { useScrollAnimation, useCurrentSection } from '@/hooks/useScrollAnimation';
 
 export default function NewHome() {
   const [activeSection, setActiveSection] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [roboticHeadVisible, setRoboticHeadVisible] = useState(false);
   const currentSection = useCurrentSection();
 
   useEffect(() => {
     setActiveSection(currentSection);
+    // Auto-trigger robotic head when entering a new section
+    if (currentSection && currentSection !== activeSection) {
+      setRoboticHeadVisible(true);
+      setTimeout(() => setShowPopup(true), 300);
+    }
   }, [currentSection]);
+
+  const handleRoboticHeadClick = () => {
+    setShowPopup(!showPopup);
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setRoboticHeadVisible(false);
+  };
 
   const newsItems = [
     {
@@ -267,6 +284,25 @@ export default function NewHome() {
           </Link>
         </div>
       </section>
+
+      {/* Robotic Head */}
+      <RoboticHead onHeadClick={handleRoboticHeadClick} isVisible={roboticHeadVisible} />
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-700 rounded-lg p-6 max-w-md w-full shadow-2xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-cyan-400">Did You Know?</h3>
+              <button
+                onClick={handlePopupClose}
+                className="text-slate-400 hover:text-slate-200 transition-colors"
+              >
+                X
+              </button>
+            </div>
+            <DidYouKnowPopup section={activeSection} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
