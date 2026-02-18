@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
-import AnimatedScientist from '@/components/AnimatedScientist';
 import DidYouKnowPopup from '@/components/DidYouKnowPopup';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import { RoboticHead } from '@/components/RoboticHead';
@@ -98,9 +97,6 @@ export default function NewHome() {
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
       {/* Reading Progress Bar */}
       <ReadingProgressBar />
-
-      {/* Animated Scientist */}
-      <AnimatedScientist />
 
       {/* Hero Section */}
       <section data-section="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4 overflow-hidden">
