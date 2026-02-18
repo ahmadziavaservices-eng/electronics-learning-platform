@@ -1,7 +1,19 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
+import AnimatedScientist from '@/components/AnimatedScientist';
+import DidYouKnowPopup from '@/components/DidYouKnowPopup';
+import ReadingProgressBar from '@/components/ReadingProgressBar';
+import { useScrollAnimation, useCurrentSection } from '@/hooks/useScrollAnimation';
 
 export default function NewHome() {
+  const [activeSection, setActiveSection] = useState('');
+  const currentSection = useCurrentSection();
+
+  useEffect(() => {
+    setActiveSection(currentSection);
+  }, [currentSection]);
+
   const newsItems = [
     {
       tag: 'AI & ML',
@@ -67,8 +79,14 @@ export default function NewHome() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Reading Progress Bar */}
+      <ReadingProgressBar />
+
+      {/* Animated Scientist */}
+      <AnimatedScientist />
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4 overflow-hidden">
+      <section data-section="hero" className="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute w-96 h-96 bg-gradient-radial from-cyan-500/20 to-transparent rounded-full -top-48 -right-48 animate-pulse"></div>
@@ -123,7 +141,8 @@ export default function NewHome() {
       </section>
 
       {/* Tech News Section */}
-      <section id="news" className="py-20 px-4 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
+      <section data-section="tech-news" id="news" className="py-20 px-4 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent relative">
+        {activeSection === 'tech-news' && <DidYouKnowPopup section="tech-news" />}
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
@@ -172,7 +191,8 @@ export default function NewHome() {
       </section>
 
       {/* Trending Topics Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent">
+      <section data-section="trending-topics" className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent relative">
+        {activeSection === 'trending-topics' && <DidYouKnowPopup section="trending-topics" />}
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-black mb-4">
@@ -196,7 +216,8 @@ export default function NewHome() {
       </section>
 
       {/* Future Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
+      <section data-section="future-features" className="py-20 px-4 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent relative">
+        {activeSection === 'future-features' && <DidYouKnowPopup section="future-features" />}
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
