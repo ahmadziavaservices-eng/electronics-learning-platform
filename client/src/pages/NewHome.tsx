@@ -111,11 +111,11 @@ export default function NewHome() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <div className="mb-6 inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full">
-            <span className="text-cyan-400 text-sm font-semibold">Welcome to ElectroLearn</span>
+          <div className="mb-5 inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full">
+            <span className="text-cyan-400 text-base font-semibold">Welcome to ElectroLearn</span>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
             <span className="bg-gradient-to-r from-cyan-400 via-lime-400 to-cyan-400 bg-clip-text text-transparent">
               Master Electronics & IoT
             </span>
@@ -123,7 +123,7 @@ export default function NewHome() {
             <span className="text-slate-200">in 2026</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-3xl mx-auto">
             From fundamental circuits to advanced IoT applications. Learn at your own pace with comprehensive, hands-on courses designed for beginners and professionals.
           </p>
 
@@ -140,18 +140,18 @@ export default function NewHome() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-4">
-              <div className="text-3xl font-bold text-cyan-400">3</div>
-              <div className="text-sm text-slate-400 mt-1">Comprehensive Courses</div>
+          <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-5">
+              <div className="text-3xl font-bold text-cyan-400 mb-3">3</div>
+              <div className="text-base text-slate-400">Comprehensive Courses</div>
             </div>
-            <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-4">
-              <div className="text-3xl font-bold text-lime-400">15+</div>
-              <div className="text-sm text-slate-400 mt-1">Learning Modules</div>
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-5">
+              <div className="text-3xl font-bold text-lime-400 mb-3">15+</div>
+              <div className="text-base text-slate-400">Learning Modules</div>
             </div>
-            <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-4">
-              <div className="text-3xl font-bold text-purple-400">100%</div>
-              <div className="text-sm text-slate-400 mt-1">Free & Open</div>
+            <div className="bg-slate-800/50 border border-slate-700/50 rounded-lg p-5">
+              <div className="text-3xl font-bold text-purple-400 mb-3">100%</div>
+              <div className="text-base text-slate-400">Free & Open</div>
             </div>
           </div>
         </div>
