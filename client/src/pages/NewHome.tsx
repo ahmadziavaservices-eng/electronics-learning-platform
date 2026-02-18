@@ -3,7 +3,6 @@ import { Link } from 'wouter';
 import { ArrowRight } from 'lucide-react';
 import DidYouKnowPopup from '@/components/DidYouKnowPopup';
 import ReadingProgressBar from '@/components/ReadingProgressBar';
-import { RoboticHead } from '@/components/RoboticHead';
 import { useScrollAnimation, useCurrentSection } from '@/hooks/useScrollAnimation';
 
 export default function NewHome() {
@@ -281,8 +280,7 @@ export default function NewHome() {
         </div>
       </section>
 
-      {/* Robotic Head */}
-      <RoboticHead onHeadClick={handleRoboticHeadClick} isVisible={roboticHeadVisible} />
+      {/* Did You Know Popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-slate-900 border border-slate-700 rounded-lg p-6 max-w-md w-full shadow-2xl">
