@@ -178,7 +178,7 @@ export function SMDResistorCalculator() {
               maxLength={codeType === '3-digit' ? 3 : 4}
               className="bg-slate-800 border-slate-600 text-white text-center text-2xl font-bold tracking-widest"
             />
-            <p className="text-xs text-slate-400">
+            <p className="text-sm text-slate-400">
               {codeType === '3-digit'
                 ? 'Format: XYZ (X=1st digit, Y=2nd digit, Z=multiplier)'
                 : 'Format: XYZM (X=1st digit, Y=2nd digit, Z=3rd digit, M=multiplier)'}
@@ -266,7 +266,7 @@ export function SMDResistorCalculator() {
                   className="bg-slate-800 hover:bg-slate-700 p-2 rounded text-center text-sm font-semibold text-purple-400"
                 >
                   {c}
-                  <div className="text-xs text-slate-400 mt-1">{formatValue(parseInt(c[0]) * 10 + parseInt(c[1]) * Math.pow(10, parseInt(c[2])))}</div>
+                  <div className="text-sm text-slate-400 mt-1">{formatValue(parseInt(c[0]) * 10 + parseInt(c[1]) * Math.pow(10, parseInt(c[2])))}</div>
                 </button>
               ))}
             </div>

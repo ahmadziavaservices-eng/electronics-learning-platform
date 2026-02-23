@@ -68,7 +68,7 @@ export default function ModuleDetail() {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Module Header */}
-            <div className="mb-8">
+            <div className="mb-12">
               <div className="flex items-center gap-3 mb-4">
                 <Badge className={getDifficultyColor(module.difficulty)}>
                   {module.difficulty}
@@ -78,8 +78,8 @@ export default function ModuleDetail() {
                   {module.duration}
                 </Badge>
               </div>
-              <h1 className="text-4xl font-bold mb-4">{module.title}</h1>
-              <p className="text-xl text-slate-300">{module.description}</p>
+              <h1 className="text-4xl font-bold mb-4 leading-tight">{module.title}</h1>
+              <p className="text-xl text-slate-300 leading-relaxed">{module.description}</p>
             </div>
 
             {/* Module Content */}
@@ -90,9 +90,9 @@ export default function ModuleDetail() {
                   Course Content
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="leading-relaxed">
                 <div 
-                  className="prose prose-invert max-w-none text-slate-300"
+                  className="prose prose-invert max-w-none text-slate-300 leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: module.content }}
                 />
               </CardContent>
@@ -131,8 +131,8 @@ export default function ModuleDetail() {
                   <div className="space-y-4">
                     {module.practiceProblems.map((problem, idx) => (
                       <div key={idx} className="bg-slate-700 rounded-lg p-4 border border-slate-600">
-                        <p className="font-semibold text-blue-400 mb-2">Problem {idx + 1}</p>
-                        <p className="text-slate-300">{problem}</p>
+                        <p className="font-semibold text-blue-400 mb-2 leading-tight">Problem {idx + 1}</p>
+                        <p className="text-slate-300 leading-relaxed">{problem}</p>
                       </div>
                     ))}
                   </div>
@@ -190,7 +190,7 @@ export default function ModuleDetail() {
                             {ref.title}
                             <ExternalLink className="w-4 h-4" />
                           </p>
-                          <Badge variant="outline" className="bg-slate-800 text-slate-400 border-slate-600 text-xs mt-1">
+                          <Badge variant="outline" className="bg-slate-800 text-slate-400 border-slate-600 text-sm mt-1">
                             {ref.type}
                           </Badge>
                         </div>
@@ -275,7 +275,7 @@ export default function ModuleDetail() {
                         }`}
                       >
                         <p className="text-sm font-semibold">Module {idx + 1}</p>
-                        <p className="text-xs opacity-75 line-clamp-2">{m.title}</p>
+                        <p className="text-sm opacity-75 line-clamp-2">{m.title}</p>
                       </a>
                     </Link>
                   ))}

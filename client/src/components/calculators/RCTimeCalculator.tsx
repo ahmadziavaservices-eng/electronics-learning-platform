@@ -89,7 +89,7 @@ export function RCTimeCalculator() {
                 onChange={(e) => setResistance(e.target.value === '' ? '' : Number(e.target.value))}
                 className="bg-slate-800 border-slate-600 text-white"
               />
-              <p className="text-xs text-slate-400">Enter in Ohms (10000 = 10kΩ)</p>
+              <p className="text-sm text-slate-400">Enter in Ohms (10000 = 10kΩ)</p>
             </div>
 
             <div className="space-y-2">
@@ -101,7 +101,7 @@ export function RCTimeCalculator() {
                 onChange={(e) => setCapacitance(e.target.value === '' ? '' : Number(e.target.value))}
                 className="bg-slate-800 border-slate-600 text-white"
               />
-              <p className="text-xs text-slate-400">Enter in Farads (0.0001 = 100µF)</p>
+              <p className="text-sm text-slate-400">Enter in Farads (0.0001 = 100µF)</p>
             </div>
           </div>
 
@@ -155,15 +155,15 @@ export function RCTimeCalculator() {
             <div>
               <p className="text-purple-300 font-semibold">Time Constant Formula:</p>
               <p className="text-purple-200 text-sm font-mono">τ (tau) = R × C</p>
-              <p className="text-purple-200 text-xs mt-1">Where: R = Resistance (Ω), C = Capacitance (F)</p>
+              <p className="text-purple-200 text-sm mt-1">Where: R = Resistance (Ω), C = Capacitance (F)</p>
             </div>
             <div>
               <p className="text-purple-300 font-semibold">Charging Voltage Formula:</p>
               <p className="text-purple-200 text-sm font-mono">V(t) = Vs × (1 - e^(-t/τ))</p>
-              <p className="text-purple-200 text-xs mt-1">Where: Vs = Supply voltage, t = Time, τ = Time constant</p>
+              <p className="text-purple-200 text-sm mt-1">Where: Vs = Supply voltage, t = Time, τ = Time constant</p>
             </div>
             <div className="bg-slate-800 p-2 rounded">
-              <p className="text-slate-300 text-xs">
+              <p className="text-slate-300 text-sm">
                 After 1τ: 63.2% charged<br/>
                 After 3τ: 95% charged<br/>
                 After 5τ: 99% charged (practically fully charged)

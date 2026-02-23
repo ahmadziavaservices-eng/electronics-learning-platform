@@ -137,7 +137,7 @@ export function CalculatorModal({
 
             {/* Footer with gradient line */}
             <div className="border-t border-cyan-500/20 bg-gradient-to-r from-cyan-600/10 to-purple-600/10 p-4">
-              <p className="text-xs text-slate-400 text-center">
+              <p className="text-sm text-slate-400 text-center">
                 💡 Tip: Use the calculator above to solve real-world electronics problems
               </p>
             </div>

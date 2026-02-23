@@ -62,31 +62,31 @@ export default function CourseLanding() {
             </Badge>
           </div>
           
-          <h1 className="text-5xl font-bold mb-4">{course.title}</h1>
-          <p className="text-xl text-slate-300 mb-8">{course.longDescription}</p>
+          <h1 className="text-5xl font-bold mb-4 leading-tight">{course.title}</h1>
+          <p className="text-xl text-slate-300 mb-8 leading-relaxed">{course.longDescription}</p>
 
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-6 py-8 border-y border-slate-700">
             <div>
-              <div className="flex items-center gap-2 text-blue-400 mb-2">
+              <div className="flex items-center gap-2 text-blue-400 mb-2 leading-tight">
                 <Clock className="w-5 h-5" />
                 <span className="font-semibold">Duration</span>
               </div>
-              <p className="text-2xl font-bold">{course.duration}</p>
+              <p className="text-2xl font-bold leading-tight">{course.duration}</p>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-cyan-400 mb-2">
+              <div className="flex items-center gap-2 text-cyan-400 mb-2 leading-tight">
                 <BookOpen className="w-5 h-5" />
                 <span className="font-semibold">Modules</span>
               </div>
-              <p className="text-2xl font-bold">{course.modules.length}</p>
+              <p className="text-2xl font-bold leading-tight">{course.modules.length}</p>
             </div>
             <div>
-              <div className="flex items-center gap-2 text-green-400 mb-2">
+              <div className="flex items-center gap-2 text-green-400 mb-2 leading-tight">
                 <Target className="w-5 h-5" />
                 <span className="font-semibold">Projects</span>
               </div>
-              <p className="text-2xl font-bold">{Math.ceil(course.modules.length / 2)}</p>
+              <p className="text-2xl font-bold leading-tight">{Math.ceil(course.modules.length / 2)}</p>
             </div>
           </div>
 

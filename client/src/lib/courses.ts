@@ -73,7 +73,10 @@ export interface Course {
   references?: Reference[];
 }
 
+import { powerSupplyCourse } from './powerSupplyCourse';
+
 export const courses: Course[] = [
+  powerSupplyCourse,
   {
     id: 'electronics-101',
     title: 'Electronics 101',
@@ -529,6 +532,12 @@ export const courseCategories = [
     name: 'IoT & Connectivity',
     description: 'Build connected devices with WiFi and Bluetooth',
     color: 'from-green-500 to-green-600'
+  },
+  {
+    id: 'power-electronics',
+    name: 'Power Electronics',
+    description: 'Master power supply design and high-power applications',
+    color: 'from-yellow-500 to-orange-600'
   }
 ];
 

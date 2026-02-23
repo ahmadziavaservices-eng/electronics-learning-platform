@@ -23,7 +23,7 @@ export default function Calculators() {
       icon: Zap,
       category: 'Basic',
       description: 'Calculate voltage, current, or resistance',
-      color: 'from-cyan-600 to-blue-600'
+      color: 'from-cyan-500 to-blue-500'
     },
     {
       id: 'power',
@@ -31,7 +31,7 @@ export default function Calculators() {
       icon: Lightbulb,
       category: 'Basic',
       description: 'Calculate power consumption and dissipation',
-      color: 'from-yellow-600 to-orange-600'
+      color: 'from-lime-500 to-green-500'
     },
     {
       id: 'resistor-color',
@@ -39,7 +39,7 @@ export default function Calculators() {
       icon: Gauge,
       category: 'Basic',
       description: 'Decode resistor color bands',
-      color: 'from-green-600 to-emerald-600'
+      color: 'from-purple-500 to-pink-500'
     },
     {
       id: 'smd-code',
@@ -47,7 +47,7 @@ export default function Calculators() {
       icon: Wrench,
       category: 'Basic',
       description: 'Decode SMD resistor markings',
-      color: 'from-purple-600 to-pink-600'
+      color: 'from-orange-500 to-red-500'
     },
     {
       id: 'led-resistor',
@@ -55,7 +55,7 @@ export default function Calculators() {
       icon: Lightbulb,
       category: 'Components',
       description: 'Calculate current-limiting resistor for LEDs',
-      color: 'from-red-600 to-pink-600'
+      color: 'from-red-500 to-pink-500'
     },
     {
       id: 'voltage-divider',
@@ -63,7 +63,7 @@ export default function Calculators() {
       icon: Zap,
       category: 'Components',
       description: 'Calculate voltage divider output',
-      color: 'from-indigo-600 to-purple-600'
+      color: 'from-cyan-500 to-purple-500'
     },
     {
       id: 'rc-time',
@@ -71,7 +71,7 @@ export default function Calculators() {
       icon: Gauge,
       category: 'Components',
       description: 'Calculate charging/discharging time',
-      color: 'from-teal-600 to-cyan-600'
+      color: 'from-lime-500 to-cyan-500'
     },
     {
       id: 'unit-converter',
@@ -79,7 +79,7 @@ export default function Calculators() {
       icon: Calculator,
       category: 'Converters',
       description: 'Convert between electrical units',
-      color: 'from-slate-600 to-gray-600'
+      color: 'from-purple-500 to-cyan-500'
     }
   ];
 
@@ -91,19 +91,19 @@ export default function Calculators() {
     : calculators.filter(c => c.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white">
       {/* Header */}
-      <div className="border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm sticky top-0 z-40">
+      <div className="border-b border-slate-700/50 bg-gradient-to-b from-slate-900/80 to-slate-950/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <Link href="/">
-              <Button variant="ghost" size="sm" className="text-slate-400 hover:text-white">
+              <Button variant="ghost" size="sm" className="text-cyan-400 hover:text-cyan-300">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back
               </Button>
             </Link>
             <div>
-              <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+              <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-lime-400">
                 Electronics Calculators
               </h1>
               <p className="text-slate-400">Real-world problem solving tools for electronics</p>
@@ -112,19 +112,19 @@ export default function Calculators() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-12">
         {/* Category Filter */}
         <div className="mb-8">
-          <h2 className="text-lg font-semibold mb-4 text-slate-300">Filter by Category</h2>
-          <div className="flex gap-2 flex-wrap">
+          <h2 className="text-lg font-semibold mb-4 text-slate-300 leading-tight">Filter by Category</h2>
+          <div className="flex gap-3 flex-wrap">
             {categories.map(cat => (
               <Button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`${
                   selectedCategory === cat
-                    ? 'bg-gradient-to-r from-cyan-600 to-purple-600 text-white'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    ? 'bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-400 hover:to-cyan-500 text-slate-950 font-bold'
+                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border border-slate-700/50'
                 }`}
               >
                 {cat}
@@ -134,28 +134,32 @@ export default function Calculators() {
         </div>
 
         {/* Calculator Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {filteredCalculators.map(calc => {
             const Icon = calc.icon;
             return (
               <Card
                 key={calc.id}
                 onClick={() => setActiveCalculator(calc.id)}
-                className={`cursor-pointer transition-all border-2 ${
+                className={`cursor-pointer transition-all border group hover:-translate-y-1 ${
                   activeCalculator === calc.id
-                    ? `border-cyan-500 bg-gradient-to-br ${calc.color} bg-opacity-20`
-                    : 'border-slate-700 hover:border-slate-600'
+                    ? `border-cyan-500/50 bg-gradient-to-br ${calc.color} bg-opacity-20 shadow-lg shadow-cyan-500/20`
+                    : 'border-slate-700/50 bg-gradient-to-br from-slate-800/60 to-slate-900/60 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/10'
                 }`}
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center gap-2 mb-2">
-                    <Icon className="w-5 h-5 text-cyan-400" />
-                    <span className="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300">
+                    <Icon className={`w-5 h-5 ${activeCalculator === calc.id ? 'text-lime-400' : 'text-cyan-400'}`} />
+                    <span className={`text-sm px-2 py-1 rounded font-semibold ${
+                      activeCalculator === calc.id
+                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50'
+                        : 'bg-slate-700/60 text-slate-300 border border-slate-600/50'
+                    }`}>
                       {calc.category}
                     </span>
                   </div>
-                  <CardTitle className="text-base">{calc.name}</CardTitle>
-                  <CardDescription className="text-xs">{calc.description}</CardDescription>
+                  <CardTitle className={`text-base ${activeCalculator === calc.id ? 'text-cyan-400' : 'text-slate-100 group-hover:text-cyan-400'} transition-colors`}>{calc.name}</CardTitle>
+                  <CardDescription className="text-sm text-slate-400">{calc.description}</CardDescription>
                 </CardHeader>
               </Card>
             );
@@ -164,7 +168,7 @@ export default function Calculators() {
 
         {/* Active Calculator */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+          <h2 className="text-2xl md:text-3xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-lime-400 leading-tight">
             {calculators.find(c => c.id === activeCalculator)?.name}
           </h2>
 
@@ -179,23 +183,23 @@ export default function Calculators() {
         </div>
 
         {/* Educational Note */}
-        <Card className="bg-gradient-to-r from-slate-800 to-slate-900 border-cyan-500/30">
+        <Card className="bg-gradient-to-r from-slate-800/60 to-slate-900/60 border-cyan-500/30 hover:border-cyan-500/50 transition-all">
           <CardHeader>
             <CardTitle className="text-cyan-400">💡 About These Calculators</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-3 text-slate-300">
-            <p>
+          <CardContent className="space-y-3 text-slate-300 leading-relaxed">
+            <p className="leading-relaxed">
               These calculators are designed to teach <strong>real-world problem solving</strong>. Each calculator includes:
             </p>
-            <ul className="space-y-2 text-sm">
-              <li>✓ Real-world problem scenarios you'll actually face</li>
-              <li>✓ Step-by-step measurement guides with multimeter instructions</li>
-              <li>✓ Safety warnings and common mistakes to avoid</li>
-              <li>✓ Practical examples with components from Digilog</li>
-              <li>✓ Verification methods to check your work</li>
-              <li>✓ Links to related course modules for deeper learning</li>
+            <ul className="space-y-2 text-sm leading-relaxed">
+              <li className="flex gap-2"><span className="text-lime-400">✓</span> Real-world problem scenarios you'll actually face</li>
+              <li className="flex gap-2"><span className="text-lime-400">✓</span> Step-by-step measurement guides with multimeter instructions</li>
+              <li className="flex gap-2"><span className="text-lime-400">✓</span> Safety warnings and common mistakes to avoid</li>
+              <li className="flex gap-2"><span className="text-lime-400">✓</span> Practical examples with components from Digilog</li>
+              <li className="flex gap-2"><span className="text-lime-400">✓</span> Verification methods to check your work</li>
+              <li className="flex gap-2"><span className="text-lime-400">✓</span> Links to related course modules for deeper learning</li>
             </ul>
-            <p className="text-sm pt-2">
+            <p className="text-sm pt-2 leading-relaxed">
               Use these calculators not just to get answers, but to understand <strong>why</strong> the calculation matters and <strong>how</strong> to apply it in real circuits.
             </p>
           </CardContent>
